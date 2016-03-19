@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <!-- titolo della pagina -->
+        <title>BuySellBooks</title>
+        <!-- meta informazioni -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Paolo Corpino">
+        <meta name="keywords" content="libri,buysellbooks,BuySellBooks">
+        <meta name="description" content="BuySellBooks">
+    </head>
+    <body>
+        <header>
+            <!-- titolo -->
+            <h1>Inserisci i tuoi libri per venderli</h1>
+        </header>
+        <nav>
+           <!-- link esterni -->
+           <table>
+            <tr>
+                <td><a href="descrizione.html">Descrizione</a></td>
+                <td><a href="login.html">Login</a></td>
+            </tr>
+            </table> 
+        </nav>
+        <div> 
+            <!-- secondo titolo -->
+            <h2>Inserisci i dati del libro</h2>
+            <!-- Form venditore -->
+            <form action="post">
+            <!-- nome linbro - autore -->
+            <label for="name">Nome libro - Autore </label><input type="text" name="name" value="'Nome libro' - 'Autore libro'" id="name"/>
+            <!-- immagine libro -->
+            <label for="file">Immagine libro </label><input type="file" name="file" id="file"/>  
+            <!-- descrizione -->
+            <label for="descrizione">Descrizione libro</label><br/><textarea rows="4" cols="20" name="descrizione" id="descrizione"></textarea>
+            <!-- prezzo del libro -->
+            <label for="prezzo">Prezzo : </label><input type="text" name="prezzo" id="prezzo" value="prezzo in euro">
+            <!-- quantità -->
+            <label for="quantita">Quantit&agrave;</label>
+            <input type="number" name="quantita" id="quantita">
+            <!-- submit e reset -->
+            <input type="submit" value="Invia"/>
+                <input type="reset" value="Reimposta"/>
+            </form>
+        </div>
+        <footer>
+        </footer>
+    </body>
+</html>
