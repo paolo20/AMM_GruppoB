@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <!-- titolo della pagina -->
+        <title>BuySellBooks</title>
+        <!-- meta informazioni -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Paolo Corpino">
+        <meta name="keywords" content="libri,buysellbooks,BuySellBooks">
+        <meta name="description" content="BuySellBooks">
+        <!-- riferimento alla pagina css -->
+        <link href="./css/sheetcss.css" rel="stylesheet" type="text/css" media="screen"/>
+    </head>
+    <body>
+        <div id="page">
+        <header>
+            <!-- titolo -->
+            <h1>BuySellBooks</h1>
+        </header>
+         <div id="sidebarLogin">
+            <!-- link esterni -->
+            <table id="tabellaLink">
+            <tr class="trLogin">
+                <td><a href="descrizione.html">Descrizione</a></td>
+            </tr>
+            <tr class="trLogin">
+                <td><a href="login.html">Login</a></td>
+            </tr>
+            </table> 
+        </div>
+        <div id="contenentVenditore"> 
+            <!-- secondo titolo -->
+            <h2>Inserisci i dati del libro</h2>
+            <!-- Form venditore -->
+            <form action="post">
+           <!-- label vuoto -->
+            <label class="labelVuoto"></label>
+            <!-- nome linbro - autore -->
+            <label class="label" id="labelNome" for="name">Nome libro - Autore </label><input type="text" name="name" value="'Nome libro' - 'Autore libro'" id="name"/>
+            <!-- label vuoto -->
+            <label class="labelVuoto"></label>
+            <!-- immagine libro -->
+            <label class="label" id="labelImmagine" for="file">Immagine libro </label><input type="file" name="file" id="file"/>  
+            <!-- label vuoto -->
+            <label class="labelVuoto"></label>
+            <!-- prezzo del libro -->
+            <label class="label" id="labelPrezzo" for="prezzo">Prezzo</label><input type="text" name="prezzo" id="prezzo" value="prezzo in euro">
+            <!-- label vuoto -->
+            <label class="labelVuoto"></label>
+            <!-- quantità -->
+            <label class="label" id="labelQuantita" for="quantita">Quantit&agrave;</label><input type="number" name="quantita" id="quantita">
+            <!-- label vuoto -->
+            <label class="labelVuoto"></label>
+            <!-- descrizione -->
+            <label class="label" id="labelDescrizione" for="descrizione">Descrizione libro</label><br/><textarea rows="4" cols="20" name="descrizione" id="descrizione"></textarea>
+            <!-- label vuoto -->
+            <label class="labelVuoto"></label>
+            <!-- submit e reset -->
+            <input type="submit" value="Invia" id="submitVenditore"/>
+            <input type="reset" value="Reset" id="reset"/>
+            </form>
+        </div>
+        <footer>
+        </footer>
+      </div>
+    </body>
+</html>
