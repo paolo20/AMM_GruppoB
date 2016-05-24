@@ -1,0 +1,229 @@
+<%-- 
+    Document   : descrizione
+    Created on : 27-apr-2016, 20.08.17
+    Author     : paolo
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <jsp:include page="head.jsp"/>
+    <body>
+        <div id="page">
+            <jsp:include page="header.jsp"/>
+            <div id="sidebar">
+             <!-- link esterno --> 
+             <table>                 
+                <c:if test="${(cliente.id == null) && (venditore.id == null)}">
+                    <tr>
+                        <td><a href="form_login.jsp" id="login">Login</a</td>
+                    </tr>
+                </c:if>
+                <c:if test="${cliente.id != null}">
+                    <tr>
+                     <td><p>Ciao <span>${cliente.nome}</span></p></td>
+                    </tr>
+                    <tr> 
+                        <td><!--<form method="post" action="cliente.html">
+                            <input type="hidden" name="Cliente"  value="${cliente.id}"/>
+                            <input type="submit" name="Cliente" value="Cliente" id="inputdescrizioneClie" class="inputdescrizione">
+                            </form>-->
+                            <a href="cliente.html?pagina=1">Cliente</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><form method="post" action="logout.html">
+                            <input type="hidden" name="Cliente" value="${cliente.id}"/>
+                            <input type="submit" name="Logout" value="Logout" id="logout">
+                            </form>
+                        </td>
+                    </tr>
+                </c:if>
+                <c:if test="${venditore.id != null}">
+                    <tr>
+                        <td><p>Ciao <span>${venditore.nome}</span></p></td>
+                    </tr>
+                    <tr> 
+                        <td>
+                            <a id="linkVend" href="venditore.html?idVend=${venditore.id}"> Venditore</a>                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><form method="post" action="logout.html">
+                            <input type="hidden" name="Venditore" value="${venditore.id}"/>
+                            <input type="submit" name="Logout" value="Logout" id="logout">
+                            </form>
+                        </td>
+                    </tr>
+                </c:if>  
+             </table>
+             <p id="grassetto">Sommario</p>
+                <ol>
+                    <!-- link interni -->
+                    <li><a href="#venduti" class="sommario">Libri pi&ugrave; venduti</a></li>
+                 <li><a href="#consigliati" class="sommario">Libri consigliati dai lettori</a></li>
+                    <li><a href="#novita" class="sommario">Novit&agrave; e prossime uscite</a></li>
+                    <li><a href="#disposizioni" class="sommario">Disposizioni</a></li>
+                </ol>   
+          </div>
+            <div id="contenent">
+                <p id="primoP">Questo sito è a disposizione per chi vuole comprare o vendere libri  usati o nuovi. <br>
+                    Chi desidera interagire, fare delle recensioni tra venditori 
+            o libri può farlo.</p>
+             <!-- Secondo titolo -->
+              <h2 id="venduti">Libri più venduti</h2>
+              <p>Questa è una classifica in base alle vendite.</p>
+               <ol>
+                  <li><p class="grassetto">La dieta smartfood. In forma e in salute con i 30 cibi che allungano la vita</p>
+                     <p class="corsivo">Questo è un libro che fa finalmente chiarezza su cosa, quanto e come    
+                         mangiare per vivere di più e meglio. Smartfood è una dieta italiana <br> con 
+                        un marchio scientifico: nasce in collaborazione con un grande centro, l'Istituto 
+                        europeo di oncologia (IEO) di Milano. Facile da seguire, propone un metodo in 
+                        due fasi per cambiare senza socrifici le abitudini a tavola. I risultati? Si 
+                        combattono i chili di troppo e si prevengono cancro, patologie cardiovascolari,
+                        metaboliche e neurodegenerative. Ormai si è capito che alcuni alimenti si 
+                        comportano come farmaci, capaci di curare e proteggere l'organismo. E i 
+                        protagonisti della Dieta Smartfood sono proprio questi super cibi: 30 Smartfood, 
+                        da non <br>farsi mancare a tavola perché sono alleati della linea e della salute. 
+                        Sono smart, cioè brillanti, intelligenti, perché la loro azione sul nostro corpo è 
+                        straordinaria. Saziano, contrastano l'accumulo di grasso, allontanano le malattie 
+                        e allungaclassno lo vita. Si tratta di alimenti comuni: dalla lattuga ai cereali integrali,
+                        dalle fragole ai pistacchi. In questo libro, Eliana Liotta spiega in modo semplice 
+                        come inserirli nei menù e rivoluzionare in poche mosse il nostro stile di vita. 
+                        Ogni consiglio è improntato al rigore scientifico, perché lo Dieta Smartfood si
+                        basa su migliaia di ricerche, selezionate dalla nutrizionista Lucilla Titta, e 
+                        sugli studi all'avanguardia di nutrigenomica, lo discipline che va a individuare le
+                        relazioni tra patrimonio genetico e cibo.</p></li>
+                    <li><p class="grassetto">Sole</p>
+                        <p class="corsivo">La storia vera di un amore speciale tra una bulldog inglese e la sua mamma umana. 
+                        Adorabile, divertente e commovente: semplicemente Sole. Un appassionante racconto 
+                        di pancia e di cuore come una favola moderna.</p></li>
+                    <li><p class="grassetto">Inarrestabile. La via dell'autoefficacia verso il tuo sviluppo personale</p>
+                     <p class="corsivo">In un mondo che va così veloce per avere successo e per vivere meglio è 
+                        necessario dedicarsi alla propria crescita personale. Il problema è che 
+                        il mondo del self-help è pieno di informazioni false o inesatte, basate
+                        su "slogan all'americana" che danno euforia passeggera, ma non forniscono
+                        un reale beneficio a chi ne fa uso. Questo libro risponde all'esigenza di
+                        quanti vogliono approcciare al proprio sviluppo personale con un metodo
+                        basato su teorie scientifiche e replicabili. L'autore spiega, senza tanti 
+                        giri di parole, il risultato della ricerca di Albert Bandura sul tema 
+                        dell'auto-efficacia e propone un metodo step-by-step, ricco di esercizi, 
+                        per liberarsi dei fattori che bloccano le persone, aumentando così la propria 
+                        autoefficacia e determinazione.</p></li>
+                </ol>
+                <!-- Terzo titolo -->
+             <h2 id="consigliati">Libri consigliati dai lettori</h2>
+             <p>Classifica consigliata da voi che amate leggere in ogni momento.</p>
+             <ol>
+                 <li><p class="grassetto">Il mondo di Beatrix Potter</p>
+                        <p class="corsivo">Da più di cento anni il mondo di Beatrix Potter affascina grandi e piccini:
+                         le storie di Peter Coniglio sono un classico della letteratura per l'infanzia
+                        e sono state tradotte in oltre trentacinque lingue. In questo volume sono raccolte,
+                        nella loro versione integrale, tutte le ventitré avventure di Peter Coniglio e le
+                        filastrocche di Beatrix Potter. Le storie vengono presentare nell'esatta sequenza
+                        in cui furono pubblicate, per rispettare i riferimenti e i rimandi pensati dall'autrice,
+                        grazie a personaggi che ritornano e trame che si prolungano da un testo all'altro. 
+                        Inoltre il volume include quattro storie pubblicate postume, che ancora una volta mostrano
+                            le grandi doti di narratrice e di illustratrice di Beatrix Potter. Età di lettura: da 3 anni.</p></li>
+                    <li><p class="grassetto">A spasso col mostro</p>
+                     <p class="corsivo">"Ha zanne tremende, artigli affilati, e denti da mostro di bava baganati". 
+                        Ora il Gruffalò è protagonista anche di questo libro pieno di giochi, rompicapi 
+                        e pagine da colorare, con oltre 40 adesivi riposizionabili. Età di lettura: da 6 anni.</p></li>
+                 <li><p class="grassetto">A spasso col mostro</p>
+                      <p class="corsivo">"Ha zanne tremende, artigli affilati, e denti da mostro di bava baganati". 
+                        Ora il Gruffalò è protagonista anche di questo libro pieno di giochi, rompicapi 
+                         e pagine da colorare, con oltre 40 adesivi riposizionabili. Età di lettura: da 6 anni.</p></li>
+             </ol>
+             <!-- Quarto titolo -->
+             <h2 id="novita">Novità e prossime uscite</h2>
+             <p>Delle novit&agrave; solo per voi. Andate subito a leggerli.</p>
+                <ol>
+                    <li><p class="grassetto">La chimera</p>
+                      <p class="corsivo">Nel 1610 Zardino è un piccolo borgo immerso tra le nebbie e le risaie a sud del Monte Rosa.
+                        Un villaggio come tanti, e come tanti <br>destinato a essere cancellato senza lasciare tracce.
+                        C'è però una storia clamorosa, soffocata sotto le ceneri del tempo, che Sebastiano Vassalli
+                        ha riportato alla luce: la storia di una donna intorno alla quale si intrecciano tutte le 
+                        illusioni e le menzogne di un secolo terribile e sconosciuto. Antonia, una trovatella cresciuta
+                        nella Pia Casa di Novara, un giorno viene scelta da due contadini e portata a Zardino, dove 
+                        cerca di vivere con la fede e la semplicità che le hanno insegnato le monache. Ma la ragazza 
+                        è strana, dice la gente. Perché è scura d'occhi, pelle e capelli, come una strega, e una volta
+                        è svenuta al cospetto del vescovo Bascapè, l'uomo che doveva diventare Papa e che si è messo 
+                        in testa di trasformare in santo chiunque abiti quelle terre. E poi perché Antonia è bella, 
+                        troppo bella, ed è innamorata, ed è indipendente: in lei ci dev'essere per forza qualcosa di
+                        diabolico... Vassalli illumina gli angoli più oscuri di un secolo senza Dio e senza Provvidenza, 
+                        ricostruendo un episodio che è stato crocevia di molti destini e che, in un turbine di menzogne
+                        e fanatismi, ci dice molto di come si è formato il carattere degli italiani.</p></li>
+                 <li><p class="grassetto">La ballata di Adam Henry</p>
+                        <p class="corsivo">"Divino distacco, diabolica perspicacia": cosi si mormora negli ambienti giudiziari londinesi 
+                        a proposito di Fiona Maye, giudice <br>dell'Alta Corte britannica in servizio presso la litigiosa
+                        Sezione Famiglia. Sposata da trentacinque anni con lo stesso uomo e senza figli, il giudice Maye
+                        ha dedicato tutta la sua carriera alla composizione di dissidi sanguinosi spesso giocati nella 
+                        carne di chi un tempo si è amato. Battaglie feroci per l'affidamento di figli non più condivisi,
+                        baruffe patrimoniali, esplosioni d'irrazionalità cui il giudice Maye oppone un paziente esercizio
+                        di misura e sobrietà nella convinzione di "poter restituire ragionevolezza a situazioni senza 
+                        speranza". I casi su cui è chiamata a pronunciarsi popolano i giorni e ossessionano le notti di
+                        Fiona, calcandone la coscienza. Forse la rendono più sfuggente, distratta. Sarà dunque a questo
+                        che si deve l'oltraggiosa richiesta di suo marito Jack? "Ho bisogno di una bella storia 
+                        passionale", un "ultimo giro" extraconiugale con la ventottenne Melanie, esperta di statistica.
+                        Umiliata, ferita, "abbandonata agli albori della vecchiaia", Fiona cerca rifugio, come d'abitudine, 
+                        nel caso successivo. È quello di Adam Henry, violinista dilettante, poeta in erba, diciassette anni
+                        e nove mesi, troppo pochi per decidere autonomamente della propria vita o della propria morte. 
+                        Adam è affetto da una forma aggressiva di leucemia che richiede trattamento immediato.</p></li>
+                 <li><p class="grassetto">È tutta vita</p>
+                        <p class="corsivo">Stavano così bene insieme, cosa è successo alla loro vita? 
+                        Cosa è successo ai due chiusi in una camera d'albergo con il cartello "non disturbare" sulla porta? Dove sono finite la passione,
+                        la complicità?
+                        Il nuovo libro di Fabio Volo è un'immersione nella vita quotidiana di una coppia, nell'evoluzione
+                        di un amore. Racconta la crisi che si scatena alla nascita di un figlio e, ancora di più, 
+                        racconta di quando qualcosa rompe l'incantesimo tra due innamorati. E suggerisce, lascia 
+                        intravedere una risposta, una via d'uscita. È come se i protagonisti dei suoi romanzi più amati,
+                        Il giorno in più o Il tempo che vorrei, si ritrovassero ad affrontare quello che viene dopo
+                        l'innamoramento, la responsabilità e la complessità dello stare insieme per davvero.
+                        Ancora una volta Volo sorprende per la capacità di fotografare e dare un nome ai sentimenti,
+                        perfino quelli meno nobili e non per questo meno comuni. È tutta vita è un romanzo diretto, 
+                        sincero, spudorato. Leggendolo capita di ridere e commuoversi, come quando qualcosa ci riguarda
+                        da vicino.</p></li>
+                    <li><p class="grassetto">L'alba di Alexanderplatz. Berlin: 2</p>
+                        <p class="corsivo">Quando la città era ancora la città, ogni mattina le persone si svegliavano a Berlino Ovest e 
+                        a Berlino Est, divise dal lungo, inesorabile Muro. Quando la città era ancora la città, Timo
+                        e Jakob e Christa non potevano immaginare che un giorno sarebbero stati costretti <br>ad aprire 
+                        gli occhi in un mondo senza più adulti, tra i quartieri di una Berlino irriconoscibile e 
+                        pericolosa. Una città in cui per sopravvivere si sono divisi in gruppi: Gropiusstadt, Havel, 
+                        Reichstag, Tegel, Zoo. Nonostante le lotte e le rivalità, però, tutti loro hanno qualcosa <br>in 
+                        comune: il virus che alla fine dell'adolescenza se li porterà via, come se crescere fosse una
+                        condanna.E il virus non è l'unico pericolo. <br>C'è una creatura misteriosa che si aggira per le strade, 
+                        sbrana e uccide animali e ragazzi, e poi scompare, quasi fosse invisibile. Soltanto alleandosi 
+                        è possibile scoprire chi è e difendersi.
+                        Ma nella Berlino che non è più Berlino, è meglio affrontare la minaccia da soli o allearsi 
+                        con il nemico?
+                        Pensò che la gente, quando è in pericolo, diventa egoista.
+                        E che l'egoismo è come legna per il fuoco.
+                        E che il fuoco, alla fine, brucia tutto.</p></li>            
+                </ol> 
+            
+              <!-- Quinto titolo -->
+              <h2 id="disposizioni">Disposizioni</h2>
+              <!-- Sesto titolo -->
+                <h3>Disposizioni dei venditori</h3>
+              <p>Ogni venditore può mettere a disposizione i suoi libri in vendita. 
+                I venditori possono interagire con i compratori che desiderano avere delle informazioni 
+                in più sui libri in vendita.</p>  
+                <!-- Settimo titolo -->
+                <h3>Disposizioni dei clienti</h3>
+                <p>Ogni cliente ha il libero accesso alle disposizioni del sito, per vedere 
+            i libri in vendita, le recensioni da parte di altri clienti.Ogni cliente <br>può 
+            diventare compratore o venditore registrandosi al sito.</p>    
+            </div>
+            <div id="clear">                
+            </div>
+            <footer>
+            </footer>
+        </div>
+    </body>
+</html>
