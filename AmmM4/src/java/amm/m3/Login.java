@@ -102,6 +102,9 @@ public class Login extends HttpServlet {
             }
             
         }
+        else {
+            request.getRequestDispatcher("form_login.jsp").forward(request, response);
+        }
         
         
         

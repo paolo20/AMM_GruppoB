@@ -35,41 +35,52 @@ and open the template in the editor.
             </tr>
             </table> 
         </div>
-        <div id="contenentVenditore"> 
+        <div id="contenentCliente"> 
             <c:if test="${errore.length() != null}">
                 <p>Accesso negato</p>
             </c:if>
             <c:if test="${errore.length() == null}">
             <!-- secondo titolo -->
             <h2 id="autenticazione">Ciao <span>${venditore.nome}</span> </h2>
-            <h2>Scegli i dati del libro</h2>
+            <c:if test="${controlloLink == 1}">
+              <h2>Quale libro vuoi modificare ?</h2>  
+            </c:if>
+            <c:if test="${controlloLink == 2}">
+              <h2>Quale libro vuoi eliminare ?</h2>  
+            </c:if>
+            <div id="divtable">
+            <table id="tableCliente">
+                <tr class="titleTr">
+                    <th class="tdCliente">TITOLE E AUTORE</th>
+                    <th class="tdCliente">FOTO</th>
+                    <th class="tdCliente">NUMERO PEZZI</th>
+                    <th class="tdCliente">PREZZO</th>
+                    <th class="tdCliente"></th>
+                </tr>
             <c:forEach var="oggetto" items="${venditore.listaOggetti}">
-                <p>ciao</p>
+                
                   <c:if test="${((oggetto.getIdOggetto())% 2) == 0}">
-                       <tr class="pari">
-                            <td class="tdCliente">·${oggetto.nomeEAutore}</td>
-                            <td class="tdCliente"><img title="${oggetto.nomeEAutore}" alt="foto del libro" src="${oggetto.image}" width="40" height="50"></td>
-                            <td class="tdCliente">·${oggetto.quantita}</td>
-                            <td class="tdCliente">·${oggetto.prezzo}</td>
-                            <td class="tdCliente">
-                                <!--<input type="submit" name="Carrello" value="·Aggiungi al Carrello"  id="inputdescrizioneCarrello" class="inputdescrizione">-->
-                                <a class="link" href="venditore.html?idOggetto=${oggetto.getIdOggetto()}">Questo Libro</a>
-                            </td>
-                       </tr>
+                      <tr class="pari">
                   </c:if>
                   <c:if test="${((oggetto.getIdOggetto())% 2) != 0}">
                        <tr class="dispari">
-                            <td class="tdCliente">·${oggetto.nomeEAutore}</td>
+                   </c:if> 
+                         <td class="tdCliente">·${oggetto.nomeEAutore}</td>
                             <td class="tdCliente"><img title="${oggetto.nomeEAutore}" alt="foto del libro" src="${oggetto.image}" width="40" height="50"></td>
                             <td class="tdCliente">·${oggetto.quantita}</td>
                             <td class="tdCliente">·${oggetto.prezzo}</td>
                             <td class="tdCliente">
-                                <!--<input type="submit" name="Carrello" value="·Aggiungi al Carrello"  id="inputdescrizioneCarrello" class="inputdescrizione">-->
-                                <a class="link" href="venditore.html?idOggetto=${oggetto.getIdOggetto()}">Questo Libro</a>
-                            </td></td>
+                                <c:if test="${controlloLink == 1}">
+                                <a class="link" href="venditore.html?idModifica=${oggetto.getIdOggetto()}&idVend=${venditore.getId()}&controllo=1">Questo Libro</a>
+                                </c:if>
+                                <c:if test="${controlloLink == 2}">
+                                 <a class="link" href="venditore.html?idElimina=${oggetto.getIdOggetto()}&idVend=${venditore.getId()}">Questo Libro</a>  
+                                </c:if>
+                            </td>
                        </tr>
-                   </c:if>  
                   </c:forEach>
+            </table>
+            </div>
             </c:if>
         </div>
         <footer>

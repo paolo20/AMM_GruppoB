@@ -10,7 +10,10 @@ import amm.m3.Classi.Utente;
 import amm.m3.Classi.UtentiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,15 +62,13 @@ public class Cliente extends HttpServlet {
             for(  OggettoInVendita oggetto : listaOggett){
                
                 if( oggetto.getIdOggetto() == id){
-                   
-             
-                    
+                   out.println("ciao");
                     double prezzo = oggetto.getPrezzo();
                     c=1;
-                    
+                    out.println(listaClienti);
                     for(Utente u : listaClienti){
                       
-                         
+                         out.println("ciao1");
             
                          if(u.getId() == idCliente){
                           // saldo=u.getSaldoCliente(); 
@@ -75,17 +76,26 @@ public class Cliente extends HttpServlet {
                            if(saldo >= prezzo){
                                
                               if(session.getAttribute("loggedId").equals(true)){
-                                    request.setAttribute("contattore", c);
-                                    request.setAttribute("oggetto", oggetto);
-                                    request.setAttribute("cliente",UtentiFactory.getInstance().getCliente((int)session.getAttribute("id")));
-                                    request.getRequestDispatcher("confermaLibro.jsp").forward(request, response);
+                                try{
+                                    UtentiFactory.getInstance().compraOggetto(id, oggetto.getNomeEAutore(), oggetto.getPrezzo(), idCliente);
                                 }
-                                else
-                                {
+                                catch(SQLException e) {
+                                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE,null,e);
+                                } catch (Exception ex) {
+                                      Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                  
+                                request.setAttribute("contattore", c);
+                                request.setAttribute("oggetto", oggetto);
+                                request.setAttribute("cliente",UtentiFactory.getInstance().getCliente((int)session.getAttribute("id")));
+                                request.getRequestDispatcher("confermaLibro.jsp").forward(request, response);
+                              }
+                              else
+                              {
                                     //massaggio di errore
                                     request.setAttribute("errore","accesso negato");
                                     request.getRequestDispatcher("descrizione.jsp").forward(request, response);
-                                }
+                              }
                            }  
                            else{
                                //errore saldo

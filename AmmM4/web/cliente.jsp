@@ -41,6 +41,7 @@ and open the template in the editor.
             <!-- Tabella libri -->
             <h2 id="autenticazione">Ciao <span>${cliente.nome}</span> questi sono i </h2>
             <h2 >Libri in Vendita</h2>
+            <div id="divTableCliente">
             <table id="tableCliente">
                 <tr class="titleTr">
                     <th class="tdCliente">TITOLE E AUTORE</th>
@@ -77,6 +78,7 @@ and open the template in the editor.
                    </c:if>  
                   </c:forEach>
             </table>
+            </div>
            </c:if>
         </div>
         <footer>

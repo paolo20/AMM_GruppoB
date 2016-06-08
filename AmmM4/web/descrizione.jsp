@@ -22,7 +22,7 @@ and open the template in the editor.
              <table>                 
                 <c:if test="${(cliente.id == null) && (venditore.id == null)}">
                     <tr>
-                        <td><a href="form_login.jsp" id="login">Login</a</td>
+                        <td><a href="login.html" id="login">Login</a></td>
                     </tr>
                 </c:if>
                 <c:if test="${cliente.id != null}">

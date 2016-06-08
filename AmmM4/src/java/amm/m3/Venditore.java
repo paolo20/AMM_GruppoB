@@ -45,23 +45,107 @@ public class Venditore extends HttpServlet {
         
         if(request.getParameter("modifica") != null){
           int idVend=Integer.parseInt(request.getParameter("modifica"));
+          int controlloLink=Integer.parseInt(request.getParameter("controlloLink"));
           session.setAttribute("loggedId", true);
           session.setAttribute("id", idVend);
-          try{
-               UtentiFactory.getInstance().OggettiVenditore(idVend); 
+          
+          UtentiFactory.getInstance().OggettiVenditore(idVend);
+          
+          if(controlloLink == 1) {request.setAttribute("controlloLink", 1);}
+          else if(controlloLink == 2){request.setAttribute("controlloLink", 2);}
+          
+          request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore(idVend));          
+          request.getRequestDispatcher("modificaOggetto.jsp").forward(request, response);  
+        }
+        else if(request.getParameter("idElimina") != null){
+           int id= Integer.parseInt(request.getParameter("idElimina"));
+           int idVend= Integer.parseInt(request.getParameter("idVend"));
+           
+           oggetto= UtentiFactory.getInstance().getOggetto(id);
+           
+           try{
+               UtentiFactory.getInstance().eliminaOggetto(id, oggetto.getNomeEAutore(), oggetto.getPrezzo());
             }
             catch(SQLException e) {
                 Logger.getLogger(Venditore.class.getName()).log(Level.SEVERE,null,e);
             }
-          request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore((int)session.getAttribute("id")));
-          request.getRequestDispatcher("modificaOggetto.jsp").forward(request, response);  
-        }        
-        else if(request.getParameter("elimina") != null){
-          int idVend=Integer.parseInt(request.getParameter("elimina"));
-          session.setAttribute("loggedId", true);
-          session.setAttribute("id", idVend);
-          request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore((int)session.getAttribute("id")));
-          request.getRequestDispatcher("eliminaOggetto.jsp").forward(request, response);  
+           
+           oggetto= UtentiFactory.getInstance().getOggetto(id);
+           
+           request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore(idVend));
+           request.setAttribute("oggetto",oggetto);
+           request.getRequestDispatcher("conferma.jsp").forward(request, response);
+        }
+        else if(request.getParameter("idModifica") != null)
+        {
+           int id= Integer.parseInt(request.getParameter("idModifica"));
+           int idVend= Integer.parseInt(request.getParameter("idVend"));
+           int controllo = Integer.parseInt(request.getParameter("controllo"));
+           if(controllo == 1){
+            request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore(idVend));
+            request.setAttribute("oggetto",UtentiFactory.getInstance().getOggetto(id));
+            request.setAttribute("controllo", controllo);
+            request.getRequestDispatcher("oggettoModifica.jsp").forward(request, response); 
+           }else if(controllo == 2){
+            request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore(idVend));
+            request.setAttribute("oggetto",UtentiFactory.getInstance().getOggetto(id));
+            request.setAttribute("controllo", controllo);
+            request.getRequestDispatcher("oggettoModifica.jsp").forward(request, response);               
+           }
+             
+        }
+        else if(request.getParameter("ModificaImage") != null){
+            
+            int idVend= Integer.parseInt(request.getParameter("idVend"));
+            String image="img/";
+            image=image+request.getParameter("file");
+            
+            oggetto.setImage(image);
+            
+            try{
+               UtentiFactory.getInstance().modificaImage(idVend,image); 
+            }
+            catch(SQLException e) {
+                Logger.getLogger(Venditore.class.getName()).log(Level.SEVERE,null,e);
+            }
+            
+            request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore(idVend));
+            request.setAttribute("oggetto", oggetto);
+            request.setAttribute("controllo", 2);
+            request.getRequestDispatcher("conferma.jsp").forward(request, response);
+        }
+        else if(request.getParameter("Modifica") != null){
+            //zona servlet per la modifica del libro 
+            
+            int idVend=Integer.parseInt(request.getParameter("idVend"));
+            String nome = request.getParameter("name");
+            double prezzo = Double.parseDouble(request.getParameter("prezzo"));
+            int quantita = Integer.parseInt(request.getParameter("quantita"));
+            String descrizione = request.getParameter("descrizione");
+            
+            
+            session.setAttribute("loggedId", true);
+            session.setAttribute("id", idVend);
+            
+            oggetto.setIdOggetto(8);
+            oggetto.setNomeEAutore(nome);
+            oggetto.setPrezzo(prezzo);
+            oggetto.setQuantita(quantita);
+            oggetto.setDescrizione(descrizione);
+            
+            try{
+               UtentiFactory.getInstance().modificaOggetto(idVend,nome,descrizione,prezzo,quantita); 
+            }
+            catch(SQLException e) {
+                Logger.getLogger(Venditore.class.getName()).log(Level.SEVERE,null,e);
+            }
+            
+            request.setAttribute("venditore",UtentiFactory.getInstance().getVenditore(idVend));
+            request.setAttribute("oggetto", oggetto);
+            request.setAttribute("controllo", 1);
+            request.getRequestDispatcher("conferma.jsp").forward(request, response);
+            
+            
         }
         else if(request.getParameter("Submit") != null)
         {

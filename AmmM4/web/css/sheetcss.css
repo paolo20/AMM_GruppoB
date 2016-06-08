@@ -408,6 +408,18 @@ a#login
     border-radius: 5px;
 }
 
+#divTableCliente{
+   overflow: Auto;
+   width: 300px;
+   height: 80%;
+   border: solid 0.5px;
+   border-color:#b45a51;
+   scrollbar-base-color: #000000;
+   scrollbar-arrow-color: #CCCCCC;
+   scrollbar-track-color: #CCCCCC;
+   margin-left: 10%;
+}
+
 #autenticazione
 {
   font-size:7px;
@@ -604,7 +616,7 @@ label::after, label::before
 #contenentVenditore
 {
     width: 368px;
-    height: 300px;
+    height: 100%;
     background-color: #ea8d0e; 
     margin-left: 160px;
     margin-top: 2px;
@@ -612,6 +624,22 @@ label::after, label::before
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
+    scrollbar-base-color: #000000;
+    scrollbar-arrow-color: #CCCCCC;
+    scrollbar-track-color: #CCCCCC;
+    overflow: Auto;
+}
+
+#divtable{
+   overflow: Auto;
+   width: 300px;
+   height: 80%;
+   border: solid 0.5px;
+   border-color:#b45a51;
+   scrollbar-base-color: #000000;
+   scrollbar-arrow-color: #CCCCCC;
+   scrollbar-track-color: #CCCCCC;
+   margin-left: 10%;
 }
 
 #labelNome,#labelImmagine,#labelDescrizione,#labelPrezzo,#labelQuantita{
@@ -706,6 +734,15 @@ input.inputdescrizione#inputdescrizioneVend{
 
 #linkVend{
     margin-left: 8px;
+}
+
+#linkCambioImage{
+    font-size: 8px;
+    margin-left: 0px;
+}
+
+#pModidica{
+    font-size: 8px;
 }
 
 /*fine 

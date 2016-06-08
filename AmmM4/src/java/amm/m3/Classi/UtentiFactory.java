@@ -44,7 +44,7 @@ public class UtentiFactory {
              //connetto il mio database
             Connection conn= DriverManager.getConnection(connectionString,"paolo","1234");
             // sql command
-            String query= "select * from Utente where username= ? and password= ? and identita= false"; 
+            String query= "select * from Utente where username= ? and password= ? "; 
             PreparedStatement stmt=conn.prepareStatement(query);
             stmt.setString(1, username);
             stmt.setString(2, password);
@@ -55,61 +55,53 @@ public class UtentiFactory {
             //controllo dei risultati
             if(res.next())
             {   // qui tutti gli attributi del professore gli imposto
-                Venditore venditore=new Venditore();
-                venditore.setId(res.getInt("id_Utente"));
-                venditore.setNome(res.getString("nome"));
-                venditore.setCognome(res.getString("cognome"));
-                venditore.setUsername(res.getString("username"));
-                venditore.setPassword(res.getString("password"));
-                venditore.setSaldo(res.getDouble("saldo"));
-                
-                stmt.close();
-                conn.close();
-                return venditore;
-                
-            }
-           
-            // sql command
-            query ="select * from Utente "+
-                   " where username= ? "+
-                   "and password = ? "+
-                   "and identita= true;";
-            stmt = conn.prepareStatement(query);
-            // daticliente
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            
-            res= stmt.executeQuery();
-            if(res.next()){
-                Cliente cliente = new Cliente();
-                cliente.setId(res.getInt("id_Utente"));
-                cliente.setNome(res.getString("nome"));
-                cliente.setCognome(res.getString("cognome"));
-                cliente.setUsername(res.getString("username"));
-                cliente.setPassword(res.getString("password"));
-                cliente.setSaldo(res.getDouble("saldo"));
+                boolean identita = res.getBoolean("identita");
+                if(identita == false){
+                    Venditore venditore=new Venditore();
+                    venditore.setId(res.getInt("id_Utente"));
+                    venditore.setNome(res.getString("nome"));
+                    venditore.setCognome(res.getString("cognome"));
+                    venditore.setUsername(res.getString("username"));
+                    venditore.setPassword(res.getString("password"));
+                    venditore.setSaldo(res.getDouble("saldo"));
+
+                    stmt.close();
+                    conn.close();
+                    return venditore;
+                }
+                else{
+                    Cliente cliente = new Cliente();
+                    cliente.setId(res.getInt("id_Utente"));
+                    cliente.setNome(res.getString("nome"));
+                    cliente.setCognome(res.getString("cognome"));
+                    cliente.setUsername(res.getString("username"));
+                    cliente.setPassword(res.getString("password"));
+                    cliente.setSaldo(res.getDouble("saldo"));
                
-                // Oggetti assegnati
-                query= "select * from Oggetto ;";
-                Statement st= conn.createStatement();
-                ResultSet res2=st.executeQuery(query);
-                //controllo dei ruisultati restituiti dalla query
-                while(res2.next()){
-                    OggettoInVendita oggetto=new OggettoInVendita();
-                    oggetto.setIdOggetto(res2.getInt("id_Oggetto"));
-                    oggetto.setNomeEAutore(res2.getString("nomeEAutore"));
-                    oggetto.setDescrizione(res2.getString("descrizione"));
-                    oggetto.setPrezzo(res2.getDouble("prezzo"));
-                    oggetto.setQuantita(res2.getInt("quantita"));
-                    cliente.getListaOggetti().add(oggetto);
+                    // Oggetti assegnati
+                    query= "select * from Oggetto";
+                    Statement st= conn.createStatement();
+                    ResultSet res2=st.executeQuery(query);
+                    //controllo dei ruisultati restituiti dalla query
+                    while(res2.next()){
+                        OggettoInVendita oggetto=new OggettoInVendita();
+                        oggetto.setIdOggetto(res2.getInt("id_Oggetto"));
+                        oggetto.setNomeEAutore(res2.getString("nomeEAutore"));
+                        oggetto.setImage(res2.getString("image"));
+                        oggetto.setDescrizione(res2.getString("descrizione"));
+                        oggetto.setPrezzo(res2.getDouble("prezzo"));
+                        oggetto.setQuantita(res2.getInt("quantita"));
+                        cliente.getListaOggetti().add(oggetto);
+                    }
+
+                    // chiudo tutto e faccio il ritorno
+                    st.close();               
+
+                    stmt.close();
+                    conn.close();
+                    return cliente;
                 }
                 
-                // chiudo tutto e faccio il ritorno
-                st.close();               
-                
-                stmt.close();
-                conn.close();
-                return cliente;
             }
             
             stmt.close();
@@ -153,9 +145,8 @@ public class UtentiFactory {
                 cliente.setPassword(res.getString("password"));
                 cliente.setSaldo(res.getDouble("saldo"));
                 // Oggetti assegnati 
-                query= "select * from Oggetto_Utente "+
-                       "join Oggetto_Utente on Oggetto_Utente.idUtente = Utente.id_Utente "+
-                       "where Oggetto_Utente.id_Utente = "+cliente.getId();
+                query= "select * from Oggetto "+
+                       "join Oggetto_Utente on Oggetto_Utente.id_Oggetto = Oggetto.id_Oggetto ";
                 Statement st= conn.createStatement();
                 ResultSet res2=st.executeQuery(query);
                 //controllo dei ruisultati restituiti dalla query
@@ -163,6 +154,7 @@ public class UtentiFactory {
                     OggettoInVendita oggetto=new OggettoInVendita();
                     oggetto.setIdOggetto(res2.getInt("id_Oggetto"));
                     oggetto.setNomeEAutore(res2.getString("nomeEAutore"));
+                    oggetto.setImage(res2.getString("image"));
                     oggetto.setDescrizione(res2.getString("descrizione"));
                     oggetto.setPrezzo(res2.getDouble("prezzo"));
                     oggetto.setQuantita(res2.getInt("quantita"));
@@ -214,6 +206,24 @@ public class UtentiFactory {
                 venditore.setPassword(res.getString("password"));
                 venditore.setSaldo(res.getDouble("saldo"));
                 
+                // Oggetti assegnati 
+                query= "select * from Oggetto "+
+                       "join Oggetto_Utente on Oggetto_Utente.id_Oggetto = Oggetto.id_Oggetto where Oggetto_Utente.id_Utente= "+id;
+                Statement st= conn.createStatement();
+                ResultSet res2=st.executeQuery(query);
+                //controllo dei ruisultati restituiti dalla query
+                while(res2.next()){
+                    OggettoInVendita oggetto=new OggettoInVendita();
+                    oggetto.setIdOggetto(res2.getInt("id_Oggetto"));
+                    oggetto.setNomeEAutore(res2.getString("nomeEAutore"));
+                    oggetto.setImage(res2.getString("image"));
+                    oggetto.setDescrizione(res2.getString("descrizione"));
+                    oggetto.setPrezzo(res2.getDouble("prezzo"));
+                    oggetto.setQuantita(res2.getInt("quantita"));
+                    venditore.getListaOggetti().add(oggetto);
+                }
+                
+                st.close();
                 stmt.close();
                 conn.close();
                 return venditore;
@@ -231,18 +241,18 @@ public class UtentiFactory {
     }
      
      // Dato un id restituisce il relativo oggetto
-    public OggettoInVendita getOggetto(String nome)
+    public OggettoInVendita getOggetto(int id)
     {
         try 
         {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "paolo", "1234");
             String query = "select * from Oggetto "+
-                           "where nomeEAutore = ?";
+                           "where id_Oggetto = ?";
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Si associano i valori
-            stmt.setString(1, nome);
+            stmt.setInt(1, id);
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
             
@@ -252,6 +262,7 @@ public class UtentiFactory {
                 OggettoInVendita oggetto = new OggettoInVendita();
                 oggetto.setIdOggetto(res.getInt("id_Oggetto"));
                     oggetto.setNomeEAutore(res.getString("nomeEAutore"));
+                    oggetto.setImage(res.getString("image"));
                     oggetto.setDescrizione(res.getString("descrizione"));
                     oggetto.setPrezzo(res.getDouble("prezzo"));
                     oggetto.setQuantita(res.getInt("quantita"));
@@ -315,8 +326,7 @@ public class UtentiFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "paolo", "1234");
             Statement stmt = conn.createStatement();
-            String query = "select * from Utente"+ 
-                           "where identita= true";
+            String query = "select * from Utente where identita= true";
             ResultSet set = stmt.executeQuery(query);
             
              // ciclo sulle righe restituite
@@ -379,17 +389,20 @@ public class UtentiFactory {
         return listaOggetti;
     }
     
-    public void OggettiVenditore(int idVenditore)throws SQLException {
+    public void OggettiVenditore(int idVenditore){
         
-        ArrayList<OggettoInVendita> listaOggetti = new ArrayList<OggettoInVendita>();
-        // path, username, password
-        Connection conn = DriverManager.getConnection(connectionString, "paolo", "1234");
+        ArrayList<OggettoInVendita> listaOggetti = new ArrayList<OggettoInVendita>();     
+        Venditore venditore=new Venditore();
             
         try 
         {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "paolo", "1234");             
+           
+            String query = "select * from Oggetto join Oggetto_Utente on Oggetto.id_Oggetto=Oggetto_Utente.ID_OGGETTO where Oggetto_Utente.ID_UTENTE= "+idVenditore;
             
             Statement stmt = conn.createStatement();
-            String query = "select * from Oggetto join Oggetto_Utente on Oggetto.id_Oggetto=Oggetto_Utente.ID_OGGETTO where Oggetto_Utente.ID_UTENTE= "+idVenditore;
+            
             ResultSet set = stmt.executeQuery(query);
             
              // ciclo sulle righe restituite
@@ -398,22 +411,23 @@ public class UtentiFactory {
                 OggettoInVendita oggetto=new OggettoInVendita();
                 oggetto.setIdOggetto(set.getInt("id_Oggetto"));
                 oggetto.setNomeEAutore(set.getString("nomeEAutore"));
+                oggetto.setImage(set.getString("image"));
                 oggetto.setDescrizione(set.getString("descrizione"));
                 oggetto.setPrezzo(set.getDouble("prezzo"));
                 oggetto.setQuantita(set.getInt("quantita"));
                 listaOggetti.add(oggetto);
+                
             }
             
-            Venditore venditore=new Venditore();
             venditore.setListaOggetti(listaOggetti);
             
-            stmt.close();
+            
+            stmt.close();           
             conn.close();
         } 
         catch (SQLException e) 
         {
-            conn.rollback();
-            throw e;
+            e.printStackTrace();
         }
     }
     
@@ -521,6 +535,7 @@ public class UtentiFactory {
             PreparedStatement descrizioneStmt = null;
             PreparedStatement prezzoStmt = null;
             PreparedStatement quantitaStmt = null;
+            PreparedStatement imageStmt = null;
             
             PreparedStatement update = null;
             
@@ -528,56 +543,62 @@ public class UtentiFactory {
             String descrizioneRes=descrizione;
             double prezzoRes=prezzo;
             int quantitaRes=quantita;
+            String imageRes="";
             
         try{
             
             conn.setAutoCommit(false);
             
+            String queryImage = "select * from Oggetto where id_Oggetto = ? ";
+            imageStmt = conn.prepareStatement(queryImage);
+            imageStmt.setInt(1,id_Oggetto);
+            ResultSet resImage = imageStmt.executeQuery();
+            while(resImage.next()){ imageRes = resImage.getString("image"); }
+                       
             if(nome.equals(null)){
-              String queryNome = "select nomeEAutore from Oggetto"+
-                             "where id_Oggetto = ? ;";
+              String queryNome = "select nomeEAutore from Oggetto where id_Oggetto = ? ";
               nomeStmt = conn.prepareStatement(queryNome);
               nomeStmt.setInt(1,id_Oggetto);
-              ResultSet resNome = nomeStmt.executeQuery(queryNome);              
+              ResultSet resNome = nomeStmt.executeQuery();              
               nomeRes = resNome.getString("nomeEAutore");
             }
             if(descrizione.equals(null)){
-              String queryDescrizione = "select descrizione from Oggetto"+
-                             "where id_Oggetto = ? ;";
+              String queryDescrizione = "select descrizione from Oggetto where id_Oggetto = ? ";
               descrizioneStmt = conn.prepareStatement(queryDescrizione);
               descrizioneStmt.setInt(1,id_Oggetto);
-              ResultSet resDescrizione = descrizioneStmt.executeQuery(queryDescrizione);            
+              ResultSet resDescrizione = descrizioneStmt.executeQuery();            
               descrizioneRes = resDescrizione.getString("descrizione");
             }
             if(prezzo == 0.0){
-              String queryPrezzo = "select prezzo from Oggetto"+
-                             "where id_Oggetto = ? ;";
+              String queryPrezzo = "select prezzo from Oggetto where id_Oggetto = ? ";
               prezzoStmt = conn.prepareStatement(queryPrezzo);
               prezzoStmt.setInt(1,id_Oggetto);
-              ResultSet resPrezzo = prezzoStmt.executeQuery(queryPrezzo);               
+              ResultSet resPrezzo = prezzoStmt.executeQuery();               
               prezzoRes = resPrezzo.getDouble("prezzo");
             }
             if(quantita == 0){
-              String queryQuantita = "select qauntita from Oggetto"+
-                             "where id_Oggetto = ? ;";
+              String queryQuantita = "select quantita from Oggetto where id_Oggetto = ? ";
               quantitaStmt = conn.prepareStatement(queryQuantita);
               quantitaStmt.setInt(1,id_Oggetto);
-              ResultSet resQuantita = quantitaStmt.executeQuery(queryQuantita);
+              ResultSet resQuantita = quantitaStmt.executeQuery();
               quantitaRes = resQuantita.getInt("quantita");  
-            }
+            }           
+            
             
             String query = "update Oggetto set "+
                            "nomeEAutore = '"+nomeRes+
+                           "', image = '"+imageRes+
                            "', descrizione = '"+descrizioneRes+
                            "', prezzo = "+prezzoRes+
-                           ", quantita = "+quantitaRes+" where id_Oggetto = ?";
+                           ", quantita = "+quantitaRes+" where id_Oggetto = ? ";
             update = conn.prepareStatement(query);
             update.setInt(1,id_Oggetto);
-            int resUpdate = update.executeUpdate(query);
+            int resUpdate = update.executeUpdate();
             
             if(resUpdate != 1 ){
                 conn.rollback();
-            }
+            }           
+            
 
         }catch(SQLException e){
             conn.rollback();
@@ -603,6 +624,10 @@ public class UtentiFactory {
                 update.close();
             }
             
+            if(imageStmt != null){
+                imageStmt.close();
+            }
+                        
             conn.setAutoCommit(true);
             conn.close();
         }
@@ -610,7 +635,42 @@ public class UtentiFactory {
         
     }
  
-    public void eleminaOggetto(int id_Oggetto, String nome, double prezzo) throws SQLException{
+    public void modificaImage(int id_Oggetto, String image) throws SQLException{
+        
+        // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "paolo", "1234");
+            
+            PreparedStatement update = null;
+            
+        try{
+            conn.setAutoCommit(false);
+            
+            String imageQuery= "update Oggetto set image = ?  where id_Oggetto = ? ";
+            update= conn.prepareStatement(imageQuery);
+            update.setString(1, image);
+            update.setInt(2, id_Oggetto);
+            int r = update.executeUpdate();
+            
+            if(r != 1){
+              conn.rollback();
+            }
+            
+        }
+        catch(SQLException e){
+            conn.rollback();
+            throw e;
+        }finally{
+                        
+            if(update != null){
+                update.close();
+            }
+                        
+            conn.setAutoCommit(true);
+            conn.close();
+        }
+    }
+    
+    public void eliminaOggetto(int id_Oggetto, String nome, double prezzo) throws SQLException{
         
         // path, username, password
         Connection conn = DriverManager.getConnection(connectionString, "paolo", "1234");
@@ -625,31 +685,49 @@ public class UtentiFactory {
             
             for(OggettoInVendita oggetto : listaOggetti){
                 if(oggetto.getIdOggetto() == id_Oggetto && oggetto.getNomeEAutore().equals(nome) && oggetto.getPrezzo() == prezzo ){
-                  if(oggetto.getQuantita() == 1){
-                    String deleteOggetto = "delete from Oggetto "+
-                                           "where id_Oggetto= ? ;"; 
-                    String deleteOggettoUtente = "delete from Oggetto "+
-                                                 "where id_Oggetto= ? ;";  
+                 
+                    if(oggetto.getQuantita() == 1){
+                    
+                    String deleteOggetto = "delete from Oggetto where id_Oggetto= ? "; 
+                    String deleteOggettoUtente = "delete from Oggetto_Utente where id_Oggetto= ? ";  
+                    
                     deleteOgg = conn.prepareStatement(deleteOggetto);
                     deleteOggUtente = conn.prepareStatement(deleteOggettoUtente);
+                    
                     deleteOgg.setInt(1,id_Oggetto);
                     deleteOggUtente.setInt(1,id_Oggetto);
-                    res1 = deleteOgg.executeUpdate(deleteOggetto);
-                    res2 = deleteOggUtente.executeUpdate(deleteOggettoUtente);
+                    
+                    res2 = deleteOggUtente.executeUpdate();
+                    res1 = deleteOgg.executeUpdate();
+                    
+                    
                     if(res1 != 1 || res2 != 1 ){
                        conn.rollback();
                     }
+                    
+                    oggetto.setNomeEAutore(null);
+                    oggetto.setImage(null);
+                    oggetto.setDescrizione(null);
+                    oggetto.setPrezzo(0.0);
+                    oggetto.setQuantita(0);
+                    
                   }else if(oggetto.getQuantita() > 1){
+                    
                     int q = oggetto.getQuantita() -1;
-                    String updateOggetto = "update Oggetto set"+
-                                           "quantita= "+q+
-                                           "where id_Oggetto = ? ;"; 
+                    
+                    String updateOggetto = "update Oggetto set quantita= "+q+"where id_Oggetto = ? "; 
+                    
                     deleteOgg = conn.prepareStatement(updateOggetto);
+                    
                     deleteOgg.setInt(1,id_Oggetto);
-                    res1 = deleteOgg.executeUpdate(updateOggetto);
+                    
+                    res1 = deleteOgg.executeUpdate();
+                    
                     if(res1 != 1 ){
                         conn.rollback();
                     }
+                    
+                    oggetto.setQuantita(q);
                   }  
                 }
             }                 
@@ -663,6 +741,81 @@ public class UtentiFactory {
             }
             if(deleteOggUtente != null){
                 deleteOggUtente.close();
+            }
+            
+            conn.setAutoCommit(true);
+            conn.close();
+        }
+    }
+    
+    public void compraOggetto(int id_Oggetto, String nome , double prezzo,int id_Cliente) throws SQLException, Exception{
+        
+        // path, username, password
+        Connection conn = DriverManager.getConnection(connectionString, "paolo", "1234");
+        
+        PreparedStatement clienteStmt= null;
+        PreparedStatement venditoreStmt= null;
+        PreparedStatement selectStmt= null;
+        
+        double nuovoSaldo=0.0;
+        int id_Venditore=0;
+        
+        try{
+            conn.setAutoCommit(false);
+            
+            Cliente cliente = new Cliente();
+            cliente=(Cliente) getCliente(id_Cliente);
+            
+            if(cliente.getSaldo() >= prezzo){
+                
+                nuovoSaldo = cliente.getSaldo()- prezzo;
+                String clienteQuery = "update Utente set saldo = "+nuovoSaldo+"where id_Utente= ? and identita = true ";
+                clienteStmt = conn.prepareStatement(clienteQuery);
+                clienteStmt.setInt(1, id_Cliente);
+                int r1 = clienteStmt.executeUpdate();
+                
+                String select = "select * from Oggetto join Oggetto_Utente on Oggetto_Utente.id_Oggetto=Oggetto.id_Oggetto where Oggetto_Utente.id_Oggetto= ? ";
+                selectStmt = conn.prepareStatement(select);
+                selectStmt.setInt(1, id_Oggetto);
+                ResultSet result = selectStmt.executeQuery();                
+                if(result.next()){ id_Venditore = result.getInt("id_Utente");}
+                
+                Venditore venditore = new Venditore();
+                venditore= (Venditore)getVenditore(id_Venditore);
+                nuovoSaldo = venditore.getSaldo() + prezzo;
+                
+                String venditoreQuery = "update Utente set saldo = "+nuovoSaldo+"where id_Utente= ? and identita = false ";
+                venditoreStmt = conn.prepareStatement(venditoreQuery);
+                venditoreStmt.setInt(1, id_Venditore);
+                int r2 = venditoreStmt.executeUpdate();
+                
+                
+                
+                if(r1 != 1 || r2 != 1 ){
+                    conn.rollback();
+                }else{
+                    eliminaOggetto(id_Oggetto, nome, prezzo);
+                }
+                
+                
+            }else{
+                throw new Exception("non hai abbastanza soldi");
+            }
+            
+        }catch(SQLException e){
+            conn.rollback();
+            throw e;
+        }finally{
+            if(clienteStmt != null){
+                clienteStmt.close();
+            } 
+            
+            if(venditoreStmt != null){
+                venditoreStmt.close();
+            }
+            
+            if(selectStmt != null){
+                selectStmt.close();
             }
             
             conn.setAutoCommit(true);

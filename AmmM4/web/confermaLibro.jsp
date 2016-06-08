@@ -40,7 +40,7 @@ and open the template in the editor.
             <p class="pConferma" id="pConferma">Nome : ${oggetto.nomeEAutore}</p>
             <p class="pConferma">Immagine : <img title="${oggetto.nomeEAutore}" alt="foto del libro" src="${oggetto.image}" width="40" height="50"/></p>
             <p class="pConferma">Prezzo : ${oggetto.prezzo} euro</p>
-            <p class="pConferma">Quantita : ${oggetto.quantita}</p>
+            <p class="pConferma">Quantita : 1</p>
             <p class="pConferma">Descrizine : ${oggetto.descrizione}</p>
             <form method="post" action="cliente.html">
               <input type="hidden" name="idClient" value="${cliente.id}"/>

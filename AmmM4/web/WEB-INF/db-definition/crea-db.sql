@@ -40,7 +40,7 @@ create table Oggetto_Utente
 
 insert into Utente(id_Utente,nome,cognome,username,password,saldo,identita)
 values(default,'Paolo','Corpino','paoloAmm','1',20,false),
-(default,'Marco','Nic','marcoAmm','2',null,true);
+(default,'Marco','Nic','marcoAmm','2',20,true);
 
 insert into Oggetto(id_Oggetto,nomeEAutore,image,descrizione,prezzo,quantita)
 values(default,'Sole - Emi Nava','img/sole.jpeg',null,18.0,3),

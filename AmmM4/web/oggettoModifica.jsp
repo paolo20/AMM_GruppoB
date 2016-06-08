@@ -49,7 +49,7 @@ and open the template in the editor.
             </tr>
             <tr>
                 <td>
-                    <a class="trLogin" href="venditore.html?modifica=${venditore.getId()}&controlloLink=2">elimina i tuoi Libri</a>
+                    <a class="trLogin" href="venditore.html?modifica=${venditore.getId()}controlloLink=2">elimina i tuoi Libri</a>
                 </td>
             </tr>
              </form>
@@ -66,32 +66,51 @@ and open the template in the editor.
             <h2>Inserisci i dati del libro</h2>
             <!-- Form venditore -->
             <form action="venditore.html" method="post">
+            <c:if test="${ controllo == 1}">
             <input type="hidden" name="idVend" value="${venditore.getId()}"/>
            <!-- label vuoto -->
             <label class="labelVuoto"></label>
             <!-- nome linbro - autore -->
-            <label class="label" id="labelNome" for="name">Nome libro - Autore </label><input type="text" name="name" value="'Nome libro' - 'Autore libro'" id="name"/>
+            <label class="label" id="labelNome" for="name">Nome libro - Autore </label><input type="text" name="name" value="${oggetto.nomeEAutore}" id="name"/>
             <!-- label vuoto -->
             <label class="labelVuoto"></label>
-            <!-- immagine libro -->
-            <label class="label" id="labelImmagine" for="file">Immagine libro </label><input type="file" name="file" id="file"/>  
+             <input type="hidden" name="image" value="${oggetto.image}"/>
             <!-- label vuoto -->
             <label class="labelVuoto"></label>
             <!-- prezzo del libro -->
-            <label class="label" id="labelPrezzo" for="prezzo">Prezzo</label><input type="text" name="prezzo" id="prezzo" value="prezzo in euro">
+            <label class="label" id="labelPrezzo" for="prezzo">Prezzo</label><input type="text" name="prezzo" id="prezzo" value="${oggetto.prezzo}">
             <!-- label vuoto -->
             <label class="labelVuoto"></label>
             <!-- quantità -->
-            <label class="label" id="labelQuantita" for="quantita">Quantit&agrave;</label><input type="number" name="quantita" id="quantita">
+            <label class="label" id="labelQuantita" for="quantita">Quantit&agrave;</label><input type="number" name="quantita" id="quantita" value="${oggetto.quantita}">
             <!-- label vuoto -->
             <label class="labelVuoto"></label>
             <!-- descrizione -->
-            <label class="label" id="labelDescrizione" for="descrizione">Descrizione libro</label><br/><textarea rows="4" cols="20" name="descrizione" id="descrizione"></textarea>
+            <label class="label" id="labelDescrizione" for="descrizione">Descrizione libro</label><br/><textarea rows="4" cols="20" name="descrizione" value="${oggetto.descrizione}" id="descrizione"></textarea>
             <!-- label vuoto -->
             <label class="labelVuoto"></label>
             <!-- submit e reset -->
-            <input type="submit" name="Submit" value="Invia" id="submitVenditore"/>
+            <input type="submit" name="Modifica" value="Modifica" id="submitVenditore"/>
             <input type="reset" value="Reset" id="reset"/>
+                       
+            <!-- immagine libro -->
+            <p id="pModidica">Se vuoi modificare l'immagine , fallo da qui
+            <a id="linkCambioImage" href="venditore.html?idModifica=${oggetto.getIdOggetto()}&idVend=${venditore.getId()}&controllo=2">Modifica immagine</a>
+            </p>
+            </c:if>
+            <c:if test="${controllo == 2}">
+                
+            <input type="hidden" name="idVend" value="${venditore.getId()}"/>    
+             
+            <!-- immagine libro -->
+            <label class="label" id="labelImmagine" for="file">Immagine libro </label><input type="file" name="file" id="file"/>  
+                           
+            <!-- submit e reset -->
+            <input type="submit" name="ModificaImage" value="Modifica" id="submitVenditore"/>
+            <input type="reset" value="Reset" id="reset"/>
+            
+            </c:if>         
+            
             </form>
             </c:if>
         </div>

@@ -12,7 +12,7 @@
     
     <welcome-file-list>
         <welcome-file>
-            descrizione.jsp
+            descrizione.html
         </welcome-file>
     </welcome-file-list>
 </web-app>

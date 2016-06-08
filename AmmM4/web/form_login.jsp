@@ -21,7 +21,7 @@ and open the template in the editor.
             <!-- link esterni -->
             <table id="tabellaLink">
             <tr class="trLogin">
-                <td><a href="descrizione.jsp">Descrizione</a></td>
+                <td><a href="descrizione.html">Descrizione</a></td>
             </tr>
             </table> 
         </div>
