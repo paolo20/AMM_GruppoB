@@ -1,0 +1,783 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-mar-2016, 20.21.10
+    Author     : paolo
+*/
+
+/* Media quesrie per pagine minori o uguale a 480px
+    INIZIO*/
+@media only screen and (max-width: 480px)
+{
+ 
+/*parte globale*/
+    
+div header
+{
+    height: 30%;      /*rende i bordi rotondi */
+}
+    
+    
+div#sidebar
+{
+    width: 99%;
+    height: 200px;
+    background-color: #ea8d0e;
+    margin-top: 5px;
+    margin-left: 0px;            
+    border-style: solid;    
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#contenent
+{
+    width: 99%;
+    height: 2300px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 210px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+    
+div#clear
+{
+    width: 100%;
+    height: 5px;
+    margin-top: 2px;
+}
+
+header h1
+{
+    font-size: 150%;
+    margin-top: 5%;
+}
+
+div table#tabellaLink
+{
+    margin-top:5%;
+    margin-left: 5px; 
+    border-style: none;
+}
+
+/*fine parte globale
+*/
+
+/*parte descrizione 
+    inizio*/
+
+div p#grassetto
+{
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/*fine parte descrizione*/
+
+/* parte login
+    inizio*/
+div#sidebarLogin
+{
+    width: 99%;;
+    height: 100px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+} 
+
+div#contenentLogin
+{
+    width: 99%;
+    height: 200px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 105px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+h2#h2Login
+{
+    margin-left: 39%;
+}
+
+input#submit{
+    font-size: 40%;
+    width: 15%;
+    margin-left: 40%;
+}
+
+/*fine 
+    parte login*/
+
+/*parte venditore
+    inizio*/
+div#contenentVenditore
+{
+    width: 99%;
+    height: 300px;
+    background-color: #ea8d0e; 
+    margin-left: 0%;
+    margin-top: 110px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div label::after, div label::before
+{   
+    content: "";
+    white-space: pre;   
+}
+
+label.labelVuoto{
+    display: block;
+}
+
+label#labelNome,label#labelImmagine,label#labelPrezzo,label#labelDescrizione,label#labelQuantita{
+    margin-left: 20px;
+    font-size: 7px;
+}
+
+input#name{
+    margin-left: 15px;
+}
+
+input#file{
+    margin-left: 30px;
+    border-style: none;
+}
+
+input#prezzo{
+    margin-left: 60px;
+}
+
+input#name,input#prezzo{
+    width: 40%;
+}
+
+input#quantita{
+    margin-left: 54px;  
+    width: 10%; 
+}
+
+input#descrizione{
+    width: 40%;
+}
+
+input#submitVenditore,input#reset{
+    margin-left: 20px;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height:15px;
+    font-size: 50%; 
+}
+
+input#submitVenditore{
+    display: block;    
+}
+
+/*fine
+    parte venditore*/
+
+/*parte cliente
+    inizio*/
+
+div#contenentCliente
+{
+    width: 99%;
+    height: 350px;
+    background-color: #ea8d0e; 
+    margin-left: 2px;
+    margin-top: 107px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+/*fine
+    parte cliente*/
+
+
+}
+
+/*FINE
+    medi queries*/
+
+
+
+
+/* Questa parte è uguale per tutte le pagine     
+    INIZIO */
+
+body
+{
+    background-color: #fdce8c;
+}
+
+div#page
+{
+    width: 100%;
+    height: 100%;
+    background-color: #fdce8c;
+    border-style: none;
+}
+
+header
+{
+    width: 99%;
+    height: 100px;
+    border-style: solid;
+    border-color: #624131;
+    background-color: #e7540e;
+    border-radius: 5px;              /*rende i bordi rotondi */
+}
+
+div
+{
+    background-color: #ea8d0e; 
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+#clear
+{
+    width: 100%;
+    height: 5px;
+    margin-top: 2px;
+    background-color: #fdce8c;
+    border-style: none;
+}
+
+footer
+{
+    width: 100%;
+    height: 50px;
+    background-color: #e7540e;
+    border-style: solid;
+    border-color: #624131;
+    border-radius: 5px;  
+    border-width: 2px;
+    
+}
+
+/* titoli */
+h1,h2,h3
+{
+    font-family: "Arial",Arial,sans-serif;
+    color: #981e11;    
+}
+
+h1
+{
+    font-size: 45px;
+    text-align: center;
+}
+
+h2
+{
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+h3
+{
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* paragrafi */
+p
+{
+    font-family: "Verdana", Geneva,sans-serif;
+    color: black;
+    font-size: 8.5px;
+    text-align: left;
+    margin-left: 5px;
+}
+
+/* link */
+a:link, a:visited
+{
+    color: #5b0300;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+input
+{
+    width: 40%;
+    height: 10%;
+    font-size: 7px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.5px;
+}
+
+/* FINE 
+    della parte generale */
+
+
+/*  Pagina descrizione 
+    Inizio                  */
+
+#sidebar
+{
+    height: 600px; 
+    width: 150px;
+    float: left;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+#contenent
+{
+    height: 2000px;
+    width: 368px;
+    margin-left: 160px;
+    margin-top: 10px;
+}
+
+p.grassetto
+{
+    font-weight: bold;
+}
+
+p#grassetto
+{
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+p.corsivo
+{
+    text-align: left;
+    font-style: italic;
+}
+
+a.sommario
+{
+    color: #242424;
+    font-size: 10px;
+    
+}
+
+a#login
+{
+    display: inline-block;
+    margin-top: 10px; 
+    margin-left: 10px;
+    font-size: 10px;
+}
+
+/*FINE 
+    descrizione */
+
+/* Pagina cliente
+    INIZIO  */
+
+#contenentCliente
+{
+    width: 368px;
+    height: 380px;
+    background-color: #ea8d0e; 
+    margin-left: 160px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+#divTableCliente{
+   overflow: Auto;
+   width: 300px;
+   height: 80%;
+   border: solid 0.5px;
+   border-color:#b45a51;
+   scrollbar-base-color: #000000;
+   scrollbar-arrow-color: #CCCCCC;
+   scrollbar-track-color: #CCCCCC;
+   margin-left: 10%;
+}
+
+#autenticazione
+{
+  font-size:7px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color:black;
+}
+
+#tableCliente{
+    /*table-layout: initial;   /* attivare la dimensione fissa per la tabella */
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 40px;
+    margin-top: 20px;    
+}
+
+.titleTr
+{
+    font-family: "Times New Roman", Times, serif;
+    font-size:8px;    
+    background-color: #900515;
+}
+
+.tdCliente{ 
+    width: 90%;
+}
+
+.pari,.dispari{
+    font-family: "Arial",Arial,sans-serif;
+    font-size: 7px; 
+    text-align: center;
+}
+
+.pari
+{
+    background-color: #c1741e;
+}
+
+.dispari
+{
+    background-color: #a1402d;
+}
+
+div .link
+{
+    color: #0d3d02;
+    font-weight: bold;
+}
+
+span{
+    color: #981e11;
+}
+
+#logout{
+    width: 40px;
+    color:black;
+    font-size: 50%;
+    margin-left:10px;
+}
+
+#logout:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+input.inputdescrizione#inputdescrizioneClie{
+    font-size:20px;
+}
+
+input.inputdescrizione#inputdescrizioneCarrello{
+    font-size:8px;
+    width: 82px;
+    background: none;
+    color: #0d3d02;
+}
+
+#confermaLibro{
+    color:black;
+    width: 20%;    
+    font-size: 50%;
+    margin-left: 140px;
+}
+
+#confermaLibro:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+#numero{
+    width: 50px;
+}
+
+#labelNumero{
+    font-size: 10px;
+}
+
+#labelFiltra{
+    font-size:10px;
+}
+#filtra{
+    width: 90px;    
+}
+
+/*FINE 
+    cliente*/
+
+/* pagina login
+    INIZIO*/
+#sidebarLogin
+{
+    width: 150px;
+    height: 200px;
+    background-color: #ea8d0e; 
+    margin-left: 5px;
+    margin-top: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+} 
+
+#contenentLogin
+{
+    width: 368px;
+    height: 200px;
+    background-color: #ea8d0e; 
+    margin-left: 160px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+table#tabellaLink
+{
+    margin-top: 40px;
+    margin-left: 5px; 
+    border-style: none;
+}
+
+#trLogin
+{
+    border-style: none; 
+}
+
+#h2Login
+{
+    margin-left: 140px;
+    font-size: 150%;
+}
+
+label::after, label::before
+{   
+    content: "";
+    white-space: pre;   
+}
+
+.label
+{
+    font-size: 8px;
+}
+
+#labelUser,#labelPassword{
+    margin-top: 2%;
+    margin-left: 42%;
+    display: block;
+}
+
+#username,#password{
+    display: block;
+    margin-left: 29%;
+    margin-top: 2%;
+}
+
+/* cambia il colore dell'input quando con il mouse clicco sopra */
+#username:focus,#password:focus{  
+    background-color: #ddfff9;
+    border-color: blue;
+    border-width: 0.8px;
+}
+
+#submit{
+    margin-left: 42%;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height:15px;
+    font-size: 50%;
+}
+
+#submit:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+#errore{
+    color: #c21700;
+    margin-left: 100px;
+}
+/*FINE 
+    pagina login*/
+
+/*parte venditore 
+    inizio*/
+#contenentVenditore
+{
+    width: 368px;
+    height: 100%;
+    background-color: #ea8d0e; 
+    margin-left: 160px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    scrollbar-base-color: #000000;
+    scrollbar-arrow-color: #CCCCCC;
+    scrollbar-track-color: #CCCCCC;
+    overflow: Auto;
+}
+
+#divtable{
+   overflow: Auto;
+   width: 300px;
+   height: 80%;
+   border: solid 0.5px;
+   border-color:#b45a51;
+   scrollbar-base-color: #000000;
+   scrollbar-arrow-color: #CCCCCC;
+   scrollbar-track-color: #CCCCCC;
+   margin-left: 10%;
+}
+
+#labelNome,#labelImmagine,#labelDescrizione,#labelPrezzo,#labelQuantita{
+    margin-left: 20%;
+    font-weight: bold;
+    font-size: 7px;
+    font-family: "Arial",Arial,sans-serif;
+}
+
+#labelDescrizione{
+    font-weight: bold;
+    font-size: 7px;
+    font-family: "Arial",Arial,sans-serif;
+    margin-top: 10px;
+    display: block;
+}
+
+#name{
+    margin-left: 35px;
+}
+
+#prezzo{
+    margin-left: 80px;
+}
+
+#quantita{
+    margin-left: 75px;
+    width: 10%; 
+}
+
+#file{
+    margin-left: 50px;
+    border-style: none;
+        
+}
+
+#descrizione{
+    font-size: 9px;
+    width: 40%;
+    margin-left: 75px;
+}
+
+#name:focus,#descrizione:focus,#prezzo:focus,#quantita:focus{
+    background-color: #ddfff9;
+    border-color: blue;
+    border-width: 0.8px; 
+}
+
+#submitVenditore{
+    display: block; 
+    margin-left: 75px;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height:15px;
+    font-size: 50%;
+}
+
+#reset{
+    margin-left: 75px;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height:15px;
+    font-size: 50%;
+}
+
+#submitVenditore:hover,#reset:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+.inputdescrizione{
+    width: 90%;
+    border-style: none;
+    background: none;
+    color: #5b0300;
+    font-size: 15px; 
+    margin-left:3px;
+}
+
+.inputdescrizione:hover
+{
+    color: #5b0300;
+    text-decoration: underline;
+}
+
+input.inputdescrizione#inputdescrizioneVend{
+    
+}
+
+#linkVend{
+    margin-left: 8px;
+}
+
+#linkCambioImage{
+    font-size: 8px;
+    margin-left: 0px;
+}
+
+#pModidica{
+    font-size: 8px;
+}
+
+/*fine 
+    parte venditore*/
+
+/*inizio
+    conferma
+*/
+#titoloConferma{
+    font-size:18px;
+}
+
+#pConferma{
+    margin-top: 50px;  
+}
+
+.pConferma{
+    margin-left:130px;
+}
+/*fine
+    conferma*/
+
+
