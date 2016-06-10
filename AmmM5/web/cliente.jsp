@@ -33,12 +33,7 @@ and open the template in the editor.
             </tr>
             <tr>
                 <td><a href="cliente.html?ricarica=${cliente.getId()}">Ricarica il tuo saldo</a></td>
-            </tr>
-            <tr>
-                <td><!-- Tasto Ricerca -->
-                    <label for="filtra" id="labelFiltra">Filtra</label>
-                    <input type="search" placeholder="per nome o categoria" name="filtra" id="filtra"/></td>
-            </tr>            
+            </tr>      
             </table> 
         </div>
         <div id="contenentCliente"> 
@@ -49,6 +44,9 @@ and open the template in the editor.
             <!-- Tabella libri -->
             <h2 id="autenticazione">Ciao <span>${cliente.nome}</span> il tuo saldo &egrave; <span>${cliente.getSaldo()} euro</span> e questi sono i </h2>
             <h2 >Libri in Vendita</h2>
+            <!-- Tasto Ricerca -->
+            <span><label for="filtra" id="labelFiltra">Filtra</label>
+                <input type="search" placeholder="per nome o categoria" name="filtra" id="filtra"/></span>
             <div id="divTableCliente">
             <table id="tableCliente">   
                 <tr class="titleTr">
