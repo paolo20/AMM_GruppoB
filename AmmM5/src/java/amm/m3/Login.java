@@ -83,7 +83,7 @@ public class Login extends HttpServlet {
                     {
                         request.setAttribute("cliente", u);
                         request.setAttribute("clienti",UtentiFactory.getInstance().getClienti());
-                       // request.setAttribute("listaOggetti",UtentiFactory.getInstance().getOggetti());
+                        request.setAttribute("listaOggetti",UtentiFactory.getInstance().getOggetti());
                         request.getRequestDispatcher("cliente.jsp").forward(request, response);
                         //loginFallito++;
                     }

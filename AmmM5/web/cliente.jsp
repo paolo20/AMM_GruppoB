@@ -56,13 +56,14 @@ and open the template in the editor.
                     <th class="tdCliente">PREZZO</th>
                     <th class="tdCliente"></th>
                 </tr>
+                <c:set var="riga" value="0" scope="page" />
                 <c:forEach var="oggetto" items="${listaOggetti}">
                   <c:choose>
                     <c:when test="${((oggetto.getIdOggetto())% 2) == 0}" >
-                        <tr class="trCliente" class="pari" >
+                        <tr class="pari" >
                     </c:when>
                     <c:otherwise>
-                        <tr class="trCliente" class="dispari" >
+                        <tr class="dispari" >
                     </c:otherwise>
                   </c:choose> 
                         <td class="tdCliente">·${oggetto.nomeEAutore}</td>
@@ -71,7 +72,8 @@ and open the template in the editor.
                         <td class="tdCliente">·${oggetto.prezzo}</td>
                         <td class="tdCliente"><a class="link" href="cliente.html?idOggetto=${oggetto.getIdOggetto()}">Compra</a></td>
                     </tr>
-                  </c:forEach>
+                <c:set var="riga" value="${riga+1}" scope="page"/>  
+                </c:forEach>
                   
             </table>
             </div>

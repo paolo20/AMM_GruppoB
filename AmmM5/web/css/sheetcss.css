@@ -430,7 +430,7 @@ a#login
 }
 
 #tableCliente{
-    /*table-layout: initial;   /* attivare la dimensione fissa per la tabella */
+    table-layout: initial;   /* attivare la dimensione fissa per la tabella */
     border-collapse: collapse;
     width: 80%;
     margin-left: 40px;
