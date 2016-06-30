@@ -1,0 +1,1698 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-mar-2016, 20.21.10
+    Author     : paolo
+*/
+
+/* Questa parte è uguale per tutte le pagine     
+    INIZIO */
+
+body
+{
+    background-color: white;
+}
+
+div#page
+{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-style: none;
+}
+
+header
+{
+    width: 100%;
+    height: 100px;
+    border-bottom: solid 2px;
+    border-color: #624131;
+    background-color: #e7540e;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
+div
+{
+    background-color: #ea8d0e; 
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+#clear
+{   clear: left;
+    width: 100%;
+    height: 5px;
+    margin-top: 2px;
+    border-style: none;
+    background-color: transparent; 
+}
+
+footer
+{
+    width: 100%;
+    height: 20px;
+    background-color: #e7540e;
+    border-style: solid;
+    border-color: #624131;
+    border-radius: 5px;  
+    border-width: 2px;
+    
+}
+
+#footerP{
+    margin-top: 0px;
+}
+
+#titoloPagina:link, a:visited
+{
+    text-decoration: none;
+}
+
+#titoloPagina:hover
+{
+    text-decoration: none;
+}
+
+/* titoli */
+h1,h2,h3
+{
+    font-family: "Arial",Arial,sans-serif;
+    color: #981e11;    
+}
+
+h1
+{
+    font-size: 45px;
+    text-align: center;
+}
+
+h2
+{
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+h3
+{
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+/* paragrafi */
+p
+{
+    font-family: "Verdana", Geneva,sans-serif;
+    color: black;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+/* link */
+a:link, a:visited
+{
+    color: #5b0300;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+input
+{
+    width: 40%;
+    height: 10%;
+    font-size: 7px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.5px;
+}
+
+/* FINE 
+    della parte generale */
+
+
+/*  Pagina descrizione 
+    Inizio                  */
+
+#sidebar
+{
+    height: 250px; 
+    width: 250px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 100px;
+}
+
+#contenent
+{
+    height: auto;
+    width: 500px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 100px;
+}
+
+p.grassetto
+{
+    font-weight: bold;
+}
+
+p#grassetto
+{
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+p.corsivo
+{
+    text-align: left;
+    font-style: italic;
+}
+
+a.sommario
+{
+    color: #242424;
+    font-size: 15px;
+    
+}
+
+a#login
+{
+    display: inline-block;
+    margin-top: 10px; 
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+/*FINE 
+    descrizione */
+
+/* Pagina cliente
+    INIZIO  */
+
+#contenentCliente
+{
+    width: 500px;
+    height: 590px;
+    background-color: #ea8d0e; 
+    margin-left: 30px;
+    margin-top: 120px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+}
+
+#divTableCliente{
+   overflow: Auto;
+   width: 300px;
+   height: 70%;
+   border: solid 0.5px;
+   border-color:#b45a51;
+   scrollbar-base-color: #000000;
+   scrollbar-arrow-color: #CCCCCC;
+   scrollbar-track-color: #CCCCCC;
+   margin-left: 10%;
+   margin-top:20px;
+}
+
+#autenticazione
+{
+  font-size:7px;
+  margin-top: 10px;
+  margin-left: 5px;
+  color:black;
+}
+
+#tableCliente{
+    table-layout: initial;   /* attivare la dimensione fissa per la tabella */
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 40px;
+    margin-top: 20px;    
+}
+
+.titleTr
+{
+    font-family: "Times New Roman", Times, serif;
+    font-size:8px;    
+    background-color: #900515;
+}
+
+.tdCliente{ 
+    width: 90%;
+    font-size: 10px;
+}
+
+.pari,.dispari{
+    font-family: "Arial",Arial,sans-serif;
+    font-size: 7px; 
+    text-align: center;
+}
+
+.pari
+{
+    background-color: #c1741e;
+}
+
+.dispari
+{
+    background-color: #a1402d;
+}
+
+div .link
+{
+    color: #0d3d02;
+    font-weight: bold;
+}
+
+span{
+    color: #981e11;
+}
+
+#logout{
+    width: 40px;
+    color:black;
+    font-size: 50%;
+    margin-left:10px;
+}
+
+#logout:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+input.inputdescrizione#inputdescrizioneClie{
+    font-size:20px;
+}
+
+input.inputdescrizione#inputdescrizioneCarrello{
+    font-size:8px;
+    width: 82px;
+    background: none;
+    color: #0d3d02;
+}
+
+#confermaLibro{
+    color:black;
+    width: 20%;    
+    font-size: 50%;
+    margin-left: 140px;
+}
+
+#confermaLibro:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+#numero{
+    width: 50px;
+}
+
+#labelNumero{
+    font-size: 10px;
+}
+
+#labelFiltra{
+    font-size:10px;
+    margin-left: 60px;
+}
+#filtra{
+    width: 200px;    
+    height: 15px;
+}
+
+div#contenentRicarica{
+    width: 500px;
+    height: 350px;
+    float: left;
+    background-color: #ea8d0e; 
+    margin-left: 20px;
+    margin-top: 120px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+
+/*FINE 
+    cliente*/
+
+/* pagina login
+    INIZIO*/
+#sidebarLogin
+{
+    width: 150px;
+    height: 100px;
+    background-color: #ea8d0e; 
+    margin-left: 90px;
+    margin-top: 120px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+} 
+
+#contenentLogin
+{
+    width: 400px;
+    height: 300px;
+    background-color: #ea8d0e; 
+    margin-left: 10px;
+    margin-top: 120px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+}
+
+table#tabellaLink
+{
+    margin-top: 40px;
+    margin-left: 5px; 
+    border-style: none;
+}
+
+#trLogin
+{
+    border-style: none; 
+}
+
+#h2Login
+{
+    margin-left: 150px;
+    font-size: 200%;
+}
+
+.form{
+    border-style: none;
+    text-align: center;
+}
+
+.label
+{
+    font-size: 20px;
+}
+
+#username,#password{
+    width: 180px;
+    font-size: 12px;
+}
+
+/* cambia il colore dell'input quando con il mouse clicco sopra */
+#username:focus,#password:focus{  
+    background-color: #ddfff9;
+    border-color: blue;
+    border-width: 0.8px;
+}
+
+#submit{
+    margin-top: 12%;
+    color:black;
+    width: 22%;
+    height:25px;
+    font-size: 80%;
+}
+
+#submit:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+#errore{
+    color: #c21700;
+    text-align: center;
+}
+/*FINE 
+    pagina login*/
+
+/*parte venditore 
+    inizio*/
+#contenentVenditore
+{
+    width: 500px;
+    height: 320px;
+    background-color: #ea8d0e; 
+    margin-left: 20px;
+    margin-top: 120px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    scrollbar-base-color: #000000;
+    scrollbar-arrow-color: #CCCCCC;
+    scrollbar-track-color: #CCCCCC;
+    overflow: Auto;
+    float: left;
+}
+
+
+div#sideBarVend{
+    width: 150px;
+    height: 200px;
+    background-color: #ea8d0e; 
+    margin-left: 90px;
+    margin-top: 120px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+}
+
+#autenticazione{
+    font-size: 13px;
+}
+
+#divtable{
+   overflow: Auto;
+   width: 400px;
+   height: 80%;
+   border: solid 0.5px;
+   border-color:#b45a51;
+   scrollbar-base-color: #000000;
+   scrollbar-arrow-color: #CCCCCC;
+   scrollbar-track-color: #CCCCCC;
+   margin-left: 10%;
+}
+
+.cont-formVed{
+    float: left;
+    width: 99%;
+    border-style: none;
+}
+
+.formVed{    
+    width: 50%;
+    border-style: none;
+    float: left;
+}
+
+#labelNome,#labelImmagine,#labelDescrizione,#labelPrezzo,#labelQuantita,#labelDescrizione{
+    margin-left: 70px;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: "Arial",Arial,sans-serif;
+}
+
+#name,#prezzo,#quantita,#file,#descrizione{
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+#name,#prezzo,#descrizione{
+    width: 200px;
+}
+
+#quantita{
+    width: 30%; 
+}
+
+#file{
+    border-style: none; 
+    width: 200px;
+    font-size: 10px;
+}
+
+#name:focus,#descrizione:focus,#prezzo:focus,#quantita:focus{
+    background-color: #ddfff9;
+    border-color: blue;
+    border-width: 0.8px; 
+}
+
+#submitVenditore{ 
+    margin-left: 20px;
+    margin-top: 5px;
+    color:black;
+    width: 12%;
+    height:20px;
+    font-size: 12px;
+}
+
+#reset{
+    margin-left: 75px;
+    margin-top: 5px;
+    color:black;
+    width: 12%;
+    height:20px;
+    font-size: 12px;
+}
+
+#formSUbmitVend{
+    height: 50px;
+}
+
+#submitVenditore:hover,#reset:hover{
+    background-color: #e7540e;
+    color: white;
+    border-color: white;
+}
+
+.inputdescrizione{
+    width: 90%;
+    border-style: none;
+    background: none;
+    color: #5b0300;
+    font-size: 15px; 
+    margin-left:3px;
+}
+
+.inputdescrizione:hover
+{
+    color: #5b0300;
+    text-decoration: underline;
+}
+
+#linkVend{
+    margin-left: 8px;
+}
+
+#linkCambioImage{
+    font-size: 8px;
+    margin-left: 0px;
+}
+
+#pModidica{
+    font-size: 8px;
+}
+
+/*fine 
+    parte venditore*/
+
+/*inizio
+    conferma
+*/
+#titoloConferma{
+    font-size:18px;
+}
+
+#pConferma{
+    margin-top: 50px;  
+}
+
+.pConferma{
+    margin-left:10px;
+    text-align: center;
+}
+
+#labelQuantitaConferma{
+    font-size: 12px;
+    margin-left: 200px;
+}
+
+#confermaLibro{
+    margin-left: 200px;
+    font-size:12px;
+}
+
+/*fine
+    conferma*/
+
+
+
+/* Media quesrie per pagine tra a 320px e 480px
+    INIZIO*/
+@media only screen and (min-width: 320px) and (max-width: 480px)
+{
+ 
+/*parte globale*/
+    
+div header
+{
+    height: 30%;      
+}
+
+div footer
+{
+    width: 100%;
+    height: 20px;  
+    margin-top: 30px;
+}
+    
+    
+div#sidebar
+{
+    width: 100%;
+    height: 250px;
+    background-color: #ea8d0e;
+    margin-top: 80px;
+    margin-left: 0px;            
+    border-style: solid;    
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#contenent
+{
+    width: 100%;
+    height: auto;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+    
+div#clear
+{
+    clear: none;
+    width: 100%;
+    height: 5px;
+    margin-top: 2px;
+}
+
+header h1
+{
+    font-size: 150%;
+    margin-top: 5%;
+}
+
+div table#tabellaLink
+{
+    margin-top:5%;
+    margin-left: 5px; 
+    border-style: none;
+}
+
+/*fine parte globale
+*/
+
+/*parte descrizione 
+    inizio*/
+
+div p#grassetto
+{
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/*fine parte descrizione*/
+
+/* parte login
+    inizio*/
+div#sidebarLogin
+{
+    width: 99%;;
+    height: 115px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 80px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+} 
+
+div#contenentLogin
+{
+    width: 99%;
+    height: 250px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+h2#h2Login
+{
+    margin-left: 39%;
+}
+
+input#submit{
+    font-size: 40%;
+    width: 15%;
+    margin-top: 10px;
+}
+
+div#formSubmit{
+    height: 20px;
+}
+
+/*fine 
+    parte login*/
+
+/*parte venditore
+    inizio*/
+div#sideBarVend
+{
+    width: 99%;;
+    height: auto;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 80px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+} 
+
+div#contenentVenditore
+{
+    width: 99%;
+    height: 300px;
+    margin-left: 0%;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div.cont-formVed{
+    float: left;
+    width: 99%;
+    border-style: none;
+}
+
+div.formVed{
+    width: 50%;
+}
+
+div#clear{
+    clear: left;
+}
+
+label#labelNome,label#labelImmagine,label#labelPrezzo,label#labelDescrizione,label#labelQuantita{
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+input#name,input#prezzo,textarea#descrizione{
+    margin-left: 5px;
+    width: 150px;
+}
+
+input#file{
+    margin-left: 5px;
+    border-style: none;
+    width: 130px;
+    font-size: 7px;
+}
+
+input#quantita{ 
+    width: 10%; 
+}
+
+input#submitVenditore,input#reset{
+    margin-left: 20px;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height:15px;
+    font-size: 50%; 
+}
+
+
+/*fine
+    parte venditore*/
+
+/*parte cliente
+    inizio*/
+
+div#contenentCliente
+{
+    width: 99%;
+    height: 590px;
+    background-color: #ea8d0e; 
+    margin-left: 2px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#divtable{
+    width: 300px;
+}
+
+div#contenentRicarica{
+    width: 99%;
+    height: 200px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+/*fine
+    parte cliente*/
+
+
+}
+
+/*FINE
+    medi queries*/
+
+/* Media quesrie per pagine tra 480px e 768px
+    INIZIO*/
+@media only screen and (min-width: 480px) and (max-width: 768px)
+{
+ 
+/*parte globale*/
+    
+div header
+{
+    height: 30%;      
+}
+
+div footer
+{
+    width: 100%;
+    height: 20px;  
+    margin-top: 3120px;
+}
+    
+    
+div#sidebar
+{
+    width: 100%;
+    height: 250px;
+    background-color: #ea8d0e;
+    margin-top: 120px;
+    margin-left: 0px;            
+    border-style: solid;    
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#contenent
+{
+    width: 100%;
+    height: auto;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+    
+div#clear
+{
+    clear: none;
+    width: 100%;
+    height: 5px;
+    margin-top: 2px;
+}
+
+header h1
+{
+    font-size: 150%;
+    margin-top: 5%;
+}
+
+div table#tabellaLink
+{
+    margin-top:5%;
+    margin-left: 5px; 
+    border-style: none;
+}
+
+/*fine parte globale
+*/
+
+/*parte descrizione 
+    inizio*/
+
+div p#grassetto
+{
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/*fine parte descrizione*/
+
+/* parte login
+    inizio*/
+div#sidebarLogin
+{
+    width: 99%;;
+    height: 100px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 120px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+} 
+
+div#contenentLogin
+{
+    width: 99%;
+    height: 300px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+footer#footerDiv{
+    margin-top: 550px;
+}
+
+div#clear{
+    clear:none;
+}
+
+h2#h2Login
+{
+    margin-left: 42%;    
+}
+
+div#form label#labelUser{
+    margin-left: 0px;
+}
+
+input#submit{
+    font-size: 40%;
+    width: 15%;
+    margin-top: 10px;
+}
+
+div#formSubmit{
+    height: 50px;    
+}
+
+/*fine 
+    parte login*/
+
+/*parte venditore
+    inizio*/
+div#contenentVenditore
+{
+    width: 99%;
+    height: auto;
+    background-color: #ea8d0e; 
+    margin-left: 0%;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    border-style: 150px solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#sideBarVend{
+    width: 99%;
+    height: auto;
+    margin-left: 0%;
+    margin-top: 150px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px; 
+}
+div.cont-formVed{
+    float: left;
+    width: 99%;
+    border-style: none;   
+}
+div.formVed {
+    margin-left: 0px;
+    width: 50%;
+}
+
+footer#footerDiv{
+    margin-top: 30px;
+}
+
+
+label#labelNome,label#labelImmagine,label#labelPrezzo,label#labelDescrizione,label#labelQuantita{
+    margin-left: 80px;
+    font-size: 15px;
+}
+
+input#name,input#prezzo,input#descrizione{
+    width: 200px;    
+}
+
+input#file{
+    margin-left: 5px;
+    border-style: none;
+}
+
+input#quantita{ 
+    width: 10%; 
+}
+
+div#clear{
+    clear: left;
+}
+
+input#submitVenditore,input#reset{
+    margin-left: 20px;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height:15px;
+    font-size: 50%; 
+}
+
+
+/*fine
+    parte venditore*/
+
+/*parte cliente
+    inizio*/
+
+div#contenentCliente
+{
+    width: 99%;
+    height: 590px;
+    background-color: #ea8d0e; 
+    margin-left: 2px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#divtable{
+    
+    margin-left: 15%;
+    
+}
+
+div#contenentRicarica{
+    width: 99%;
+    height: 200px;
+    background-color: #ea8d0e; 
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+/*fine
+    parte cliente*/
+
+
+}
+
+/*FINE768px e 1024
+    medi queries*/
+
+/* Media quesrie per pagine 1024px e 2027px
+    INIZIO*/
+@media only screen and (min-width: 1024px) and (max-width: 2027px)
+{
+    
+/*parte globale*/
+    
+div header
+{
+   height: 100px;      
+}
+    
+
+div#sidebar
+{
+    height: 290px; 
+    width: 250px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 100px;
+    background-color: #ea8d0e;          
+    border-style: solid;    
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#contenent
+{
+    height: auto;
+    width: 700px;
+    float:left;
+    margin-left: 10px;
+    margin-top: 100px;
+    background-color: #ea8d0e; 
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+    
+div#clear
+{
+    clear: left;
+    width: 100%;
+    height: 5px;
+    margin-top: 2px;
+}
+
+footer{
+    height: 30px;
+    margin-top: 50px;
+}
+
+header h1
+{
+    font-size: 300%;
+    margin-top: 2%;
+}
+
+div h2{
+    font-size: 30px;
+}
+
+div p {
+    font-size: 17px;
+}
+
+div table#tabellaLink
+{
+    margin-top:5%;
+    margin-left: 5px; 
+    border-style: none;
+}
+
+/*fine parte globale
+*/
+
+/*parte descrizione 
+    inizio*/
+
+div p#grassetto
+{
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+
+/*fine parte descrizione*/
+
+/* parte login
+    inizio*/
+div#sidebarLogin
+{
+    width: 200px;
+    height: 100px;
+    background-color: #ea8d0e; 
+    margin-left: 50px;
+    margin-top: 120px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float:left;
+} 
+
+div#contenentLogin
+{
+    width: 600px;
+    height: 360px;
+    background-color: #ea8d0e; 
+    margin-left: 20px;
+    margin-top: 120px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float:left;
+}
+
+h2#h2Login
+{
+    margin-left: 38%;
+    font-size: 50px;
+}
+
+div#formSubmit{
+    height: 50px;
+}
+
+input#submit{
+    font-size: 100%;
+    width: 20%;
+    margin-top: 30px;
+}
+
+label.label{
+    font-size: 30px;
+}
+
+input#password, input#username{
+    font-size:20px;
+    width: 200px;    
+}
+
+/*fine 
+    parte login*/
+
+/*parte venditore
+    inizio*/
+div#contenentVenditore
+{
+    width: 600px;
+    height: auto;
+    background-color: #ea8d0e; 
+    margin-left: 30px;
+    margin-top: 110px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div.cont-formVed{
+    float:left;
+    width: 99%;
+    border-style: none;
+}
+
+div.formVed{
+    float:left;
+    width: 50%;
+    border-style: none;
+}
+
+label#labelNome,label#labelImmagine,label#labelPrezzo,label#labelDescrizione,label#labelQuantita{
+    margin-left: 40px;
+    font-size: 17px;
+}
+
+input#name,input#prezzo,textarea#descrizione{
+    margin-left: 5px;
+    width: 220px;
+    font-size: 15px;
+}
+
+input#file{
+    margin-left: 30px;
+    border-style: none;
+}
+
+input#quantita{
+    margin-left: 5px;  
+    width: 10%; 
+}
+
+input#submitVenditore,input#reset{
+    margin-left: 20px;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height:25px;
+    font-size: 17px; 
+}
+
+
+/*fine
+    parte venditore*/
+
+/*parte cliente
+    inizio*/
+
+div#contenentCliente
+{
+    width: 700px;
+    height: 700px;
+    float: left;
+    background-color: #ea8d0e; 
+    margin-left: 30px;
+    margin-top: 120px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#divtable{
+    width: 600px;
+}
+
+th.tdCliente,td.tdCliente{
+    font-size: 17px;
+}
+
+div#contenentRicarica{
+    width: 600px;
+    height: 400px;
+    float: left;
+    background-color: #ea8d0e; 
+    margin-left: 30px;
+    margin-top: 120px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+/*fine
+    parte cliente*/
+
+
+}
+
+/*FINE
+    medi queries*/
+
+/* Media quesrie per pagine maggiori o uguale a 2027px
+    INIZIO*/
+@media only screen and (min-width: 2027px)
+{
+ 
+/*parte globale*/
+    
+div header
+{
+   height: 150px;      
+}
+    
+    
+div#sidebar
+{
+    height: 550px; 
+    width: 550px;
+    float: left;
+    margin-left: 250px;
+    margin-top: 150px;
+    background-color: #ea8d0e;          
+    border-style: solid;    
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#contenent
+{
+    height: auto;
+    width: 1200px;
+    float:left;
+    margin-left: 20px;
+    margin-top: 150px;
+    background-color: #ea8d0e; 
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+    
+div#clear
+{
+    clear: left;
+    width: 100%;
+    height: 5px;
+    margin-top: 2px;
+}
+
+footer{
+    height: 50px;
+    margin-top: 100px;
+}
+
+header h1
+{
+    font-size: 520%;
+    margin-top: 1%;
+}
+
+div h2{
+    font-size: 50px;
+}
+
+div h3{
+    font-size: 30px;
+}
+
+div#sidebar a{
+    font-size: 30px;
+}
+
+div p{
+    font-size: 35px;
+}
+
+div table#tabellaLink
+{
+    margin-top:5%;
+    margin-left: 5px; 
+    border-style: none;
+}
+
+/*fine parte globale
+*/
+
+/*parte descrizione 
+    inizio*/
+
+div p#grassetto
+{
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/*fine parte descrizione*/
+
+/* parte login
+    inizio*/
+div#sidebarLogin
+{
+    width: 20%;
+    height: 200px;
+    background-color: #ea8d0e; 
+    margin-left: 200px;
+    margin-top: 200px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+} 
+
+div#contenentLogin
+{
+    width: 60%;
+    height: 1000px;
+    background-color: #ea8d0e; 
+    margin-left: 20px;
+    margin-top: 200px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+}
+
+h2#h2Login
+{
+    margin-left: 38%;
+    font-size: 120px;
+}
+
+input#submit{
+    width: 20%;
+    height: 80px;
+    font-size: 60px;
+}
+
+a#aDesc{
+    font-size: 50px;
+}
+
+label.label{
+    font-size: 60px;
+}
+
+input#password, input#username{
+    font-size: 50px;
+    width: 500px;
+}
+
+/*fine 
+    parte login*/
+
+/*parte venditore
+    inizio*/
+div#sideBarVend{
+    width: 300px;
+    height: auto;
+    background-color: #ea8d0e; 
+    margin-left: 300px;
+    margin-top: 180px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float:left;
+}
+
+div#contenentVenditore
+{
+    width: 1500px;
+    height: 800px;
+    background-color: #ea8d0e; 
+    margin-left: 30px;
+    margin-top: 180px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    float: left;
+}
+
+div.cont-formVed{
+    float: left;
+    border-style: none;
+    width: 99%;
+    margin-top: 2px;
+}
+
+div.formVed{
+    float: left;
+    border-style: none;
+    width: 50%;
+}
+
+div#clear{
+    clear: left;
+}
+
+h2#autenticazione{
+    font-size: 40px;
+}
+
+a.trLogin{
+    font-size: 40px;
+}
+
+tr.trLogin{
+    font-size: 40px;
+}
+
+input#logout{
+    font-size: 40px;
+    width: 200px;
+}
+
+
+label#labelNome,label#labelImmagine,label#labelPrezzo,label#labelDescrizione,label#labelQuantita{
+    margin-left: 80px;
+    font-size: 36px;
+}
+
+input#name,input#prezzo,textarea#descrizione{
+    margin-left: 5px;
+    font-size: 40px;
+    width: 500px;
+}
+
+input#file{
+    margin-left: 5px;
+    border-style: none;
+    font-size: 30px;
+    width: 500px;
+}
+
+input#quantita{
+    margin-left: 5px;  
+    width: 100px; 
+    font-size: 40px;
+}
+
+input#submitVenditore,input#reset{
+    margin-left: 20px;
+    margin-top: 3%;
+    color:black;
+    width: 12%;
+    height: 60px;
+    font-size: 40px; 
+}
+
+
+/*fine
+    parte venditore*/
+
+/*parte cliente
+    inizio*/
+
+div#contenentCliente
+{
+    width: 1500px;
+    height: 1700px;
+    float: left;
+    background-color: #ea8d0e; 
+    margin-left: 30px;
+    margin-top: 180px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+div#divtable{
+    width: 1300px;
+}
+
+div#divTableCliente{
+    width: 1300px;
+}
+
+th.tdCliente,td.tdCliente{
+    font-size: 40px;
+}
+
+img#image{
+  width: 150px;
+ height: 160px;  
+}
+
+div#contenentRicarica{
+    width: 1500px;
+    height: 700px;
+    float: left;
+    background-color: #ea8d0e; 
+    margin-left: 30px;
+    margin-top: 180px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+/*fine
+    parte cliente*/
+
+/*conferma*/
+label#labelQuantitaConferma{
+    font-size: 40px;
+    margin-left: 600px;
+}
+
+input#numero{
+    font-size: 30px;
+}
+
+input#confermaLibro{
+    font-size: 30px;
+    margin-left: 600px;
+}
+
+}
+
+/*FINE
+    medi queries*/
+
+

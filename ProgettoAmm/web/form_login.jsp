@@ -1,0 +1,61 @@
+<%-- 
+    Document   : form_login
+    Created on : 26-apr-2016, 20.27.39
+    Author     : paolo
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <jsp:include page="head.jsp"/>
+    <body>
+        <div id="page">
+            <jsp:include page="header.jsp"/>
+            <div id="sidebarLogin">
+            <!-- link esterni -->
+            <table id="tabellaLink">
+            <tr class="trLogin">
+                <td><a href="descrizione.html" id="aDesc">Descrizione</a></td>
+            </tr>
+            </table> 
+        </div>
+            <div id="contenentLogin">         
+            <h2 id="h2Login">Login</h2>
+            <!-- Form login -->
+            <form action="login.html" method="post">
+                <c:if test="${errore.length() != null}">
+                <p id="errore">Errore : username o password errate</p>
+                </c:if>
+            <!-- username e password -->
+            <div class="form">
+                <label class="label" id="labelUser" for="username">Username </label>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="tuo nome utente" name="username" value="" id="username"/>
+            </div>
+            <div class="form">
+                <label class="label" id="labelPassword"  for="password">Password </label>
+            </div>
+            <div class="form">
+                <input type="password" placeholder="password" name="password" value="" id="password"/>    
+            </div>
+            <!-- submit -->
+            <div class="form" id="formSubmit">
+                <input type="submit" name="Submit" value="Accedi" id="submit"/>
+            </div>
+            </form>
+        </div>
+        <div id="clear">                
+        </div>
+        <footer id="footerDiv">
+            <p id="footerP">Creato da Paolo Corpino - Progetto AMM 2016 </p>
+        </footer>
+      </div>
+    </body>
+</html>
